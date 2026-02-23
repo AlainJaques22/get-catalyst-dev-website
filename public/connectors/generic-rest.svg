@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="rest-g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+  </defs>
+  <!-- Bidirectional arrows representing request/response -->
+  <path d="M10 20 L30 20" stroke="url(#rest-g)" stroke-width="3" stroke-linecap="round"/>
+  <path d="M26 15 L32 20 L26 25" fill="none" stroke="url(#rest-g)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M54 36 L34 36" stroke="url(#rest-g)" stroke-width="3" stroke-linecap="round"/>
+  <path d="M38 31 L32 36 L38 41" fill="none" stroke="url(#rest-g)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Left bracket { -->
+  <path d="M8 12 Q4 12 4 16 L4 24 Q4 28 0 28 Q4 28 4 32 L4 40 Q4 44 8 44" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+  <!-- Right bracket } -->
+  <path d="M56 12 Q60 12 60 16 L60 24 Q60 28 64 28 Q60 28 60 32 L60 40 Q60 44 56 44" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+  <!-- Center dot -->
+  <circle cx="32" cy="28" r="3" fill="url(#rest-g)" opacity="0.8"/>
+  <text x="32" y="58" text-anchor="middle" font-family="system-ui" font-size="7" font-weight="700" fill="#E0E0E0">REST</text>
+</svg>

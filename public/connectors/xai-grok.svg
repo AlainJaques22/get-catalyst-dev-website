@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="xai-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#A0B4C8"/>
+    </linearGradient>
+  </defs>
+  <!-- Bold X mark -->
+  <line x1="16" y1="10" x2="48" y2="46" stroke="url(#xai-grad)" stroke-width="5" stroke-linecap="round"/>
+  <line x1="48" y1="10" x2="16" y2="46" stroke="url(#xai-grad)" stroke-width="5" stroke-linecap="round"/>
+  <!-- Subtle glow at intersection -->
+  <circle cx="32" cy="28" r="6" fill="white" opacity="0.15"/>
+  <circle cx="32" cy="28" r="3" fill="white" opacity="0.25"/>
+  <!-- Label -->
+  <text x="32" y="58" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="7" font-weight="600" fill="#E0E0E0">xAI</text>
+</svg>

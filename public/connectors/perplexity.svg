@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs><linearGradient id="ppl-g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#20B2AA"/><stop offset="100%" stop-color="#1E90FF"/></linearGradient></defs>
+  <circle cx="32" cy="26" r="18" fill="none" stroke="url(#ppl-g)" stroke-width="2" opacity="0.4"/>
+  <line x1="32" y1="8" x2="32" y2="44" stroke="url(#ppl-g)" stroke-width="1.5" opacity="0.3"/>
+  <line x1="14" y1="26" x2="50" y2="26" stroke="url(#ppl-g)" stroke-width="1.5" opacity="0.3"/>
+  <path d="M32 14 L44 26 L32 38 L20 26Z" fill="url(#ppl-g)" opacity="0.6"/>
+  <circle cx="32" cy="26" r="5" fill="url(#ppl-g)" opacity="0.9"/><circle cx="32" cy="26" r="2" fill="white" opacity="0.8"/>
+  <line x1="44" y1="38" x2="52" y2="46" stroke="url(#ppl-g)" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+  <text x="32" y="58" text-anchor="middle" font-family="system-ui" font-size="5.5" font-weight="600" fill="#E0E0E0">Perplexity</text>
+</svg>

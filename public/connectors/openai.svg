@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- OpenAI-inspired hexagonal/neural pattern -->
+  <path d="M32 8 L32 16 M32 40 L32 48 M16 16 L22 22 M42 34 L48 40 M48 16 L42 22 M22 34 L16 40 M14 28 L22 28 M42 28 L50 28" 
+        stroke="white" stroke-width="2.5" stroke-linecap="round" opacity="0.9"/>
+  <!-- Center node -->
+  <circle cx="32" cy="28" r="10" fill="none" stroke="white" stroke-width="2.5" opacity="0.9"/>
+  <!-- Inner detail -->
+  <circle cx="32" cy="28" r="3" fill="white" opacity="0.9"/>
+  <!-- Outer nodes -->
+  <circle cx="32" cy="8" r="3" fill="white" opacity="0.7"/>
+  <circle cx="50" cy="28" r="3" fill="white" opacity="0.7"/>
+  <circle cx="32" cy="48" r="3" fill="white" opacity="0.7"/>
+  <circle cx="14" cy="28" r="3" fill="white" opacity="0.7"/>
+  <circle cx="48" cy="14" r="2.5" fill="white" opacity="0.5"/>
+  <circle cx="48" cy="42" r="2.5" fill="white" opacity="0.5"/>
+  <circle cx="16" cy="42" r="2.5" fill="white" opacity="0.5"/>
+  <circle cx="16" cy="14" r="2.5" fill="white" opacity="0.5"/>
+  <!-- Label -->
+  <text x="32" y="58" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="7" font-weight="600" fill="#E0E0E0">OpenAI</text>
+</svg>

@@ -1,0 +1,77 @@
+---
+---
+
+<section class="py-16 sm:py-24">
+  <div class="max-w-3xl mx-auto px-6">
+    <h2 class="text-2xl sm:text-3xl font-medium mb-12">
+      Get Started
+    </h2>
+
+    <div class="space-y-10">
+      <!-- Step 1 -->
+      <div>
+        <div class="flex items-baseline gap-3 mb-3">
+          <span class="text-primary font-geist-mono text-sm font-medium">01</span>
+          <h3 class="text-lg font-medium">Install Docker</h3>
+        </div>
+        <p class="text-text-secondary ml-9">
+          If you don't have Docker installed:
+          <a
+            href="https://docs.docker.com/get-docker/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-primary hover:text-primary-light transition-colors duration-150 inline-flex items-center gap-1"
+          >
+            docs.docker.com/get-docker
+            <!-- External link icon (Lucide) -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+              <polyline points="15 3 21 3 21 9"/>
+              <line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+          </a>
+        </p>
+      </div>
+
+      <!-- Step 2 -->
+      <div>
+        <div class="flex items-baseline gap-3 mb-3">
+          <span class="text-primary font-geist-mono text-sm font-medium">02</span>
+          <h3 class="text-lg font-medium">Download</h3>
+        </div>
+        <div class="ml-9">
+          <a
+            href="/downloads/docker-compose.yml"
+            download
+            class="inline-flex items-center gap-2 bg-surface border border-border hover:border-primary/40 text-text-primary font-medium px-5 py-2.5 rounded-lg transition-colors duration-150"
+          >
+            <!-- Download icon (Lucide) -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            Download docker-compose.yml
+          </a>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div>
+        <div class="flex items-baseline gap-3 mb-3">
+          <span class="text-primary font-geist-mono text-sm font-medium">03</span>
+          <h3 class="text-lg font-medium">Run</h3>
+        </div>
+        <div class="ml-9">
+          <div class="bg-[#1a1a1a] border border-border rounded-lg p-4 overflow-x-auto">
+            <code class="font-geist-mono text-sm text-primary">docker-compose up -d</code>
+          </div>
+          <p class="text-text-secondary mt-3">
+            Then open
+            <code class="font-geist-mono text-sm text-text-primary">http://localhost:3000</code>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
