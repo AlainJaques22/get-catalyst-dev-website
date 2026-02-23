@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs><linearGradient id="ds-g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4D6BFE"/><stop offset="100%" stop-color="#6E8EFF"/></linearGradient></defs>
+  <circle cx="30" cy="26" r="16" fill="url(#ds-g)" opacity="0.9"/>
+  <path d="M44 20 Q52 14 50 26 Q52 38 44 32" fill="url(#ds-g)" opacity="0.7"/>
+  <circle cx="24" cy="22" r="3" fill="white" opacity="0.9"/><circle cx="25" cy="21.5" r="1.5" fill="#0a0e14"/>
+  <path d="M20 30 Q26 35 34 30" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+  <circle cx="14" cy="14" r="2" fill="#6E8EFF" opacity="0.5"/><circle cx="10" cy="20" r="1.5" fill="#6E8EFF" opacity="0.4"/>
+  <text x="32" y="56" text-anchor="middle" font-family="system-ui" font-size="6" font-weight="600" fill="#E0E0E0">DeepSeek</text>
+</svg>

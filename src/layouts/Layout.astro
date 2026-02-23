@@ -1,0 +1,36 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Catalyst Studio — Free Browser-Based IDE for Camunda 7',
+  description = 'Catalyst Studio is a free browser-based development environment for Camunda 7. No desktop download. No setup. Just open and build.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://get-catalyst.dev" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preload" href="/fonts/Geist-Regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/Geist-Medium.woff2" as="font" type="font/woff2" crossorigin />
+
+    <title>{title}</title>
+  </head>
+  <body class="bg-bg text-text-primary font-geist antialiased" style="margin: 0; overflow: hidden;">
+    <slot />
+  </body>
+</html>

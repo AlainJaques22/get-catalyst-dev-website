@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Slack-inspired # shape using their 4 brand colors -->
+  <!-- Top-left: cranberry/red -->
+  <rect x="18" y="12" width="8" height="20" rx="4" fill="#E01E5A"/>
+  <rect x="14" y="22" width="20" height="8" rx="4" fill="#E01E5A"/>
+  <!-- Top-right: green -->
+  <rect x="38" y="12" width="8" height="20" rx="4" fill="#2EB67D"/>
+  <rect x="34" y="14" width="20" height="8" rx="4" fill="#2EB67D"/>
+  <!-- Bottom-left: blue -->
+  <rect x="18" y="28" width="8" height="20" rx="4" fill="#36C5F0"/>
+  <rect x="14" y="30" width="20" height="8" rx="4" fill="#36C5F0"/>
+  <!-- Bottom-right: yellow -->
+  <rect x="38" y="28" width="8" height="20" rx="4" fill="#ECB22E"/>
+  <rect x="34" y="38" width="20" height="8" rx="4" fill="#ECB22E"/>
+  <!-- Overlap circles at intersections for the classic Slack look -->
+  <circle cx="22" cy="18" r="4" fill="#E01E5A"/>
+  <circle cx="42" cy="18" r="4" fill="#2EB67D"/>
+  <circle cx="22" cy="42" r="4" fill="#36C5F0"/>
+  <circle cx="42" cy="42" r="4" fill="#ECB22E"/>
+  <!-- Intersection overlaps -->
+  <rect x="22" y="22" width="4" height="4" fill="#DE1C59" opacity="0.6"/>
+  <rect x="38" y="22" width="4" height="4" fill="#2EB67D" opacity="0.6"/>
+  <rect x="22" y="38" width="4" height="4" fill="#36C5F0" opacity="0.6"/>
+  <rect x="38" y="38" width="4" height="4" fill="#ECB22E" opacity="0.6"/>
+  <!-- Label -->
+  <text x="32" y="58" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="7" font-weight="600" fill="#E0E0E0">Slack</text>
+</svg>

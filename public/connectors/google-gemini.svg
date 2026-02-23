@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="gemini-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4285F4"/>
+      <stop offset="35%" stop-color="#9B72CB"/>
+      <stop offset="70%" stop-color="#D96570"/>
+      <stop offset="100%" stop-color="#F49E42"/>
+    </linearGradient>
+  </defs>
+  <!-- Gemini star shape - two overlapping 4-pointed stars -->
+  <path d="M32 4 C32 4 36 20 44 24 C36 28 32 44 32 44 C32 44 28 28 20 24 C28 20 32 4 32 4Z" fill="url(#gemini-grad)" opacity="0.9"/>
+  <path d="M32 12 C32 12 34.5 22 40 26 C34.5 30 32 40 32 40 C32 40 29.5 30 24 26 C29.5 22 32 12 32 12Z" fill="white" opacity="0.3"/>
+  <!-- Second smaller star offset -->
+  <path d="M32 18 C32 18 42 22 48 32 C42 42 32 46 32 46 C32 46 22 42 16 32 C22 22 32 18 32 18Z" fill="url(#gemini-grad)" opacity="0.5"/>
+  <!-- Label -->
+  <text x="32" y="58" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="7" font-weight="600" fill="#E0E0E0">Gemini</text>
+</svg>

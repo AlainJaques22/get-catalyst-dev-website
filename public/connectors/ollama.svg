@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs><linearGradient id="ollama-g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="100%" stop-color="#C0C0C0"/></linearGradient></defs>
+  <ellipse cx="32" cy="30" rx="14" ry="16" fill="url(#ollama-g)" opacity="0.9"/>
+  <ellipse cx="24" cy="14" rx="3" ry="7" fill="url(#ollama-g)" opacity="0.85" transform="rotate(-15 24 14)"/>
+  <ellipse cx="40" cy="14" rx="3" ry="7" fill="url(#ollama-g)" opacity="0.85" transform="rotate(15 40 14)"/>
+  <circle cx="27" cy="27" r="2.5" fill="#0a0e14"/><circle cx="37" cy="27" r="2.5" fill="#0a0e14"/>
+  <ellipse cx="32" cy="36" rx="6" ry="4" fill="#e8e8e8" opacity="0.5"/>
+  <circle cx="30" cy="35" r="1" fill="#0a0e14" opacity="0.7"/><circle cx="34" cy="35" r="1" fill="#0a0e14" opacity="0.7"/>
+  <text x="32" y="56" text-anchor="middle" font-family="system-ui" font-size="7" font-weight="600" fill="#E0E0E0">Ollama</text>
+</svg>

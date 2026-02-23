@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="sg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1A82E2"/>
+      <stop offset="100%" stop-color="#00B3E3"/>
+    </linearGradient>
+  </defs>
+  <!-- SendGrid-inspired grid of 3 squares (their logo motif) -->
+  <!-- Top row -->
+  <rect x="12" y="10" width="12" height="12" rx="2" fill="url(#sg-grad)" opacity="0.4"/>
+  <rect x="26" y="10" width="12" height="12" rx="2" fill="url(#sg-grad)" opacity="0.7"/>
+  <rect x="40" y="10" width="12" height="12" rx="2" fill="url(#sg-grad)" opacity="1.0"/>
+  <!-- Middle row -->
+  <rect x="12" y="24" width="12" height="12" rx="2" fill="url(#sg-grad)" opacity="0.7"/>
+  <rect x="26" y="24" width="12" height="12" rx="2" fill="url(#sg-grad)" opacity="1.0"/>
+  <rect x="40" y="24" width="12" height="12" rx="2" fill="url(#sg-grad)" opacity="0.4"/>
+  <!-- Bottom row -->
+  <rect x="12" y="38" width="12" height="12" rx="2" fill="url(#sg-grad)" opacity="1.0"/>
+  <rect x="26" y="38" width="12" height="12" rx="2" fill="url(#sg-grad)" opacity="0.4"/>
+  <rect x="40" y="38" width="12" height="12" rx="2" fill="url(#sg-grad)" opacity="0.7"/>
+  <!-- Label -->
+  <text x="32" y="58" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="6.5" font-weight="600" fill="#E0E0E0">SendGrid</text>
+</svg>

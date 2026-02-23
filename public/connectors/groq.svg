@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs><linearGradient id="groq-g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#F55036"/><stop offset="100%" stop-color="#FF8C00"/></linearGradient></defs>
+  <circle cx="32" cy="28" r="20" fill="none" stroke="url(#groq-g)" stroke-width="2.5" opacity="0.3"/>
+  <path d="M36 8 L24 28 L32 28 L28 48 L40 24 L32 24Z" fill="url(#groq-g)" opacity="0.95"/>
+  <line x1="10" y1="20" x2="16" y2="20" stroke="#F55036" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+  <line x1="8" y1="28" x2="14" y2="28" stroke="#FF8C00" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+  <line x1="10" y1="36" x2="16" y2="36" stroke="#F55036" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+  <text x="32" y="56" text-anchor="middle" font-family="system-ui" font-size="7" font-weight="600" fill="#E0E0E0">Groq</text>
+</svg>
