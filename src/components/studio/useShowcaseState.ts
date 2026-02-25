@@ -1,4 +1,4 @@
-import { useReducer } from 'react';
+import { useReducer, useEffect, useCallback } from 'react';
 import type { ShowcaseState, ShowcaseAction, Tab } from './types';
 
 const initialState: ShowcaseState = {
@@ -69,5 +69,30 @@ function reducer(state: ShowcaseState, action: ShowcaseAction): ShowcaseState {
 }
 
 export function useShowcaseState() {
-  return useReducer(reducer, initialState);
+  const [state, rawDispatch] = useReducer(reducer, initialState);
+
+  // Wrapped dispatch: pushes browser history on NAVIGATE so back/forward work
+  const dispatch = useCallback((action: ShowcaseAction) => {
+    rawDispatch(action);
+    if (action.type === 'NAVIGATE') {
+      history.pushState({ id: action.id, label: action.label }, '');
+    }
+  }, []);
+
+  useEffect(() => {
+    // Seed the initial history entry so the first back-press has somewhere to go
+    history.replaceState({ id: 'home', label: 'Home' }, '');
+
+    const onPopState = (e: PopStateEvent) => {
+      const id = e.state?.id ?? 'home';
+      const label = e.state?.label ?? 'Home';
+      // Use rawDispatch so we don't push another history entry
+      rawDispatch({ type: 'NAVIGATE', id, label });
+    };
+
+    window.addEventListener('popstate', onPopState);
+    return () => window.removeEventListener('popstate', onPopState);
+  }, []);
+
+  return [state, dispatch] as const;
 }

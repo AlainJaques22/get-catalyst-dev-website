@@ -1,5 +1,7 @@
+import { useRef, useEffect } from 'react';
 import type { ShowcaseState, ShowcaseAction } from './types';
 import { HomePage } from './HomePage';
+import { GetStartedPage } from './GetStartedPage';
 import { ConnectorsGrid } from './ConnectorsGrid';
 import { ConnectorDetail } from './ConnectorDetail';
 import { PlaceholderPage } from './PlaceholderPage';
@@ -91,15 +93,27 @@ const placeholderConfig: Record<string, { title: string; icon: React.ReactNode; 
 
 export function ContentArea({ state, dispatch }: ContentAreaProps) {
   const { activeView } = state;
+  const panelRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    panelRef.current?.scrollTo(0, 0);
+  }, [activeView]);
+
+  const navigate = (id: string, label: string) => {
+    dispatch({ type: 'NAVIGATE', id, label });
+  };
 
   const renderContent = () => {
     if (activeView === 'home') {
-      return <HomePage />;
+      return <HomePage onNavigate={navigate} />;
+    }
+    if (activeView === 'get-started') {
+      return <GetStartedPage onNavigate={navigate} />;
     }
     if (activeView === 'connectors') {
       return (
         <ConnectorsGrid
-          onSelect={(id, label) => dispatch({ type: 'NAVIGATE', id, label })}
+          onSelect={navigate}
         />
       );
     }
@@ -110,12 +124,12 @@ export function ContentArea({ state, dispatch }: ContentAreaProps) {
     if (placeholder) {
       return <PlaceholderPage title={placeholder.title} icon={placeholder.icon} description={placeholder.description} credentials={placeholder.credentials} />;
     }
-    return <HomePage />;
+    return <HomePage onNavigate={navigate} />;
   };
 
   return (
     <div className="sc-content-area">
-      <div className="sc-content-panel">
+      <div ref={panelRef} className="sc-content-panel">
         {renderContent()}
       </div>
     </div>

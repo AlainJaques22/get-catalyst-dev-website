@@ -1,60 +1,8 @@
 import { CatalystLogo } from './CatalystLogo';
 import ParticleCanvas from '../ParticleCanvas';
 
-function DownloadIcon({ size = 18 }: { size?: number }) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-      <polyline points="7 10 12 15 17 10" />
-      <line x1="12" y1="15" x2="12" y2="3" />
-    </svg>
-  );
-}
-
-function GlobeIcon() {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="12" r="10" />
-      <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
-      <path d="M2 12h20" />
-    </svg>
-  );
-}
-
-function PuzzleIcon() {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M19.439 7.85c-.049.322.059.648.289.878l1.568 1.568c.47.47.706 1.087.706 1.704s-.235 1.233-.706 1.704l-1.611 1.611a.98.98 0 0 1-.837.276c-.47-.07-.802-.48-.968-.925a2.501 2.501 0 1 0-3.214 3.214c.446.166.855.497.925.968a.979.979 0 0 1-.276.837l-1.61 1.611a2.404 2.404 0 0 1-1.705.707 2.402 2.402 0 0 1-1.704-.706l-1.568-1.568a1.026 1.026 0 0 0-.877-.29c-.493.074-.84.504-1.02.968a2.5 2.5 0 1 1-3.237-3.237c.464-.18.894-.527.967-1.02a1.026 1.026 0 0 0-.289-.877l-1.568-1.568A2.402 2.402 0 0 1 1.998 12c0-.617.236-1.234.706-1.704L4.315 8.685a.98.98 0 0 1 .837-.276c.47.07.802.48.968.925a2.501 2.501 0 1 0 3.214-3.214c-.446-.166-.855-.497-.925-.968a.979.979 0 0 1 .276-.837l1.61-1.611a2.404 2.404 0 0 1 1.705-.707c.618 0 1.234.236 1.704.706l1.568 1.568c.23.23.556.338.877.29.493-.074.84-.504 1.02-.968a2.5 2.5 0 1 1 3.237 3.237c-.464.18-.894.527-.967 1.02Z" />
-    </svg>
-  );
-}
-
-function TerminalIcon() {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <polyline points="4 17 10 11 4 5" />
-      <line x1="12" y1="19" x2="20" y2="19" />
-    </svg>
-  );
-}
-
-function ExternalLinkIcon() {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-      <polyline points="15 3 21 3 21 9" />
-      <line x1="10" y1="14" x2="21" y2="3" />
-    </svg>
-  );
-}
-
-function GitHubIcon() {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-      <path d="M9 18c-4.51 2-5-2-7-2" />
-    </svg>
-  );
+interface HomePageProps {
+  onNavigate: (id: string, label: string) => void;
 }
 
 function MailIcon() {
@@ -66,144 +14,242 @@ function MailIcon() {
   );
 }
 
-export function HomePage() {
+// Feature card icons (20x20, lucide-style)
+function PenIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
+    </svg>
+  );
+}
+
+function TerminalIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="4 17 10 11 4 5" />
+      <line x1="12" x2="20" y1="19" y2="19" />
+    </svg>
+  );
+}
+
+function GaugeIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="m12 14 4-4" />
+      <path d="M3.34 19a10 10 0 1 1 17.32 0" />
+    </svg>
+  );
+}
+
+function DatabaseIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <ellipse cx="12" cy="5" rx="9" ry="3" />
+      <path d="M3 5V19A9 3 0 0 0 21 19V5" />
+      <path d="M3 12A9 3 0 0 0 21 12" />
+    </svg>
+  );
+}
+
+function LinkIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+    </svg>
+  );
+}
+
+function BoxIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" />
+      <path d="m3.3 7 8.7 5 8.7-5" />
+      <path d="M12 22V12" />
+    </svg>
+  );
+}
+
+const features = [
+  { icon: <PenIcon />, title: 'Web Modeler', desc: 'Full BPMN editing in your browser. Catalyst connectors pre-loaded.' },
+  { icon: <TerminalIcon />, title: 'Live Logs', desc: 'See exactly what your process is doing, in real time.' },
+  { icon: <GaugeIcon />, title: 'Cockpit & Tasklist', desc: 'Always running, no configuration needed.' },
+  { icon: <DatabaseIcon />, title: 'Database Browser', desc: 'Inspect your process data directly. No external tools needed.' },
+  { icon: <LinkIcon />, title: 'Native Connectors', desc: 'OpenAI, Anthropic, Slack, SendGrid and more — built in, ready to use in your processes.' },
+  { icon: <BoxIcon />, title: 'Container Manager', desc: 'Start, stop and monitor your environment without touching a terminal.' },
+];
+
+const showcaseConnectors = [
+  { id: 'anthropic-claude', label: 'Anthropic Claude' },
+  { id: 'openai', label: 'OpenAI' },
+  { id: 'google-gemini', label: 'Google Gemini' },
+  { id: 'deepseek', label: 'DeepSeek' },
+  { id: 'mistral', label: 'Mistral AI' },
+  { id: 'groq', label: 'Groq' },
+  { id: 'xai-grok', label: 'xAI Grok' },
+  { id: 'azure-openai', label: 'Azure OpenAI' },
+  { id: 'perplexity', label: 'Perplexity' },
+  { id: 'fireworks-ai', label: 'Fireworks AI' },
+  { id: 'together-ai', label: 'Together AI' },
+  { id: 'ollama', label: 'Ollama' },
+  { id: 'slack', label: 'Slack' },
+  { id: 'sendgrid', label: 'SendGrid' },
+  { id: 'generic-rest', label: 'Generic REST' },
+  { id: 'webhook', label: 'Webhook' },
+];
+
+export function HomePage({ onNavigate }: HomePageProps) {
   const year = new Date().getFullYear();
 
   return (
     <div className="sc-home-page">
+      <div className="sc-hp-ribbon">Early Access</div>
+
       {/* ── Hero ── */}
       <section className="sc-hp-hero">
         <div className="sc-hp-particles">
           <ParticleCanvas />
         </div>
-        <div className="sc-hp-hero-image">
-          <img
-            src="/catalyst-hero.png"
-            alt="Catalyst Studio"
-            style={{ width: '100%', height: '100%', objectFit: 'contain' }}
-          />
-        </div>
-
-        <div className="sc-hp-hero-logo">
-          <CatalystLogo size={32} />
-          <span className="sc-hp-hero-logo-text">
-            <span className="sc-hp-hero-logo-bold">Catalyst</span> Studio
+        <div className="sc-hp-hero-lockup">
+          <CatalystLogo size={160} />
+          <span className="sc-hp-hero-lockup-text">
+            <span className="sc-hp-hero-lockup-bold">Catalyst</span>{' '}
+            <span className="sc-hp-hero-lockup-light">Studio</span>
           </span>
         </div>
 
         <h1 className="sc-hp-hero-title">
-          Still on Camunda 7? So are we.
+          Happy on Camunda 7? So are we.
         </h1>
 
+        <p className="sc-hp-hero-tagline">
+          Especially now that we've got everything a Camunda developer reaches for right here in Catalyst Studio.
+        </p>
+
         <p className="sc-hp-hero-subtitle">
-          Catalyst Studio is a free browser-based development environment
-          for Camunda 7. No desktop download. No setup. Just open and build.
+          Installation is simple. Catalyst Studio opens in your browser where you'll find everything you need, the full stack. No more app installing, no more app-hopping between engine, modeler and cockpit.
         </p>
 
         <div className="sc-hp-hero-cta">
-          <a href="/downloads/docker-compose.yml" download className="sc-hp-btn-primary">
-            <DownloadIcon />
-            Download Studio — Free
-          </a>
-          <p className="sc-hp-hero-note">Works with Camunda 7 and Operaton</p>
+          <button
+            type="button"
+            className="sc-hp-btn-primary"
+            onClick={() => onNavigate('get-started', 'Get Started')}
+          >
+            Get Started
+          </button>
         </div>
       </section>
 
-      {/* ── Problem ── */}
+      {/* ── Solution ── */}
       <section className="sc-hp-section">
         <div className="sc-hp-narrow">
-          <p className="sc-hp-problem-text">
-            The Camunda Desktop Modeler is a 100MB+ download that needs to be kept
-            in sync with element templates. Tedious. Fragile. Every team member
-            needs it configured correctly.
+          <h2 className="sc-hp-section-title">The workspace we always wanted.</h2>
+          <p className="sc-hp-solution-text">
+            One docker command installs everything. Engine running, Web Modeler open,
+            Cockpit, Tasklist, live logs, database browser — all connected,
+            all in your browser.
+          </p>
+          <p className="sc-hp-solution-text">
+            And it keeps growing. API docs, FEEL playground, reference guides
+            — more landing every release.
           </p>
         </div>
       </section>
 
-      {/* ── What Is Catalyst ── */}
+      {/* ── Features ── */}
       <section className="sc-hp-section">
-        <div className="sc-hp-card-grid">
-          <div className="sc-hp-card">
-            <div className="sc-hp-card-header">
-              <div className="sc-hp-card-icon"><GlobeIcon /></div>
-              <h3 className="sc-hp-card-title">Browser-based modeler</h3>
-            </div>
-            <p className="sc-hp-card-body">
-              Full BPMN editing in the browser. Powered by Miragon. No download. Always up to date.
-            </p>
-          </div>
-
-          <div className="sc-hp-card">
-            <div className="sc-hp-card-header">
-              <div className="sc-hp-card-icon"><PuzzleIcon /></div>
-              <h3 className="sc-hp-card-title">Element templates built-in</h3>
-            </div>
-            <p className="sc-hp-card-body">
-              Catalyst connectors pre-loaded in the properties panel. Apply, configure, deploy.
-            </p>
-          </div>
-
-          <div className="sc-hp-card">
-            <div className="sc-hp-card-header">
-              <div className="sc-hp-card-icon"><TerminalIcon /></div>
-              <h3 className="sc-hp-card-title">One-command setup</h3>
-            </div>
-            <p className="sc-hp-card-body">
-              <code className="sc-hp-code">docker-compose up</code>.
-              Everything running in minutes. Camunda 7, modeler, connectors — all in one package.
-            </p>
+        <div className="sc-hp-narrow">
+          <h2 className="sc-hp-section-title">What's inside</h2>
+          <div className="sc-hp-features-grid">
+            {features.map(f => (
+              <div key={f.title} className="sc-hp-feature-card">
+                <div className="sc-hp-feature-icon">{f.icon}</div>
+                <h3 className="sc-hp-feature-title">{f.title}</h3>
+                <p className="sc-hp-feature-desc">{f.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ── Get Started ── */}
+      {/* ── Connectors ── */}
       <section className="sc-hp-section">
         <div className="sc-hp-narrow">
-          <h2 className="sc-hp-section-title">Get Started</h2>
-
-          <div className="sc-hp-steps">
-            <div className="sc-hp-step">
-              <div className="sc-hp-step-header">
-                <span className="sc-hp-step-num">01</span>
-                <h3 className="sc-hp-step-title">Install Docker</h3>
+          <h2 className="sc-hp-section-title">Oh! did we mention it ships with connectors?</h2>
+          <p className="sc-hp-solution-text">
+            All our pre-configured connector templates are available in your BPMN Service Task properties within Catalyst Studio, you just add your API secret key, deploy and it works. Comprehensive Readme docs are provided.
+          </p>
+          <p className="sc-hp-solution-text" style={{ marginBottom: 24 }}>
+            On the server it is even more simple, the Catalyst Connector is a single JAR for all connectors that you simply drop in your Camunda Resources folder, and restart Camunda. No new services. No extra infrastructure.
+          </p>
+          <div className="sc-hp-connector-grid">
+            {showcaseConnectors.map(c => (
+              <div key={c.id} className="sc-hp-connector-chip">
+                <img src={`/connectors/${c.id}.svg`} width={20} height={20} alt="" />
+                <span>{c.label}</span>
               </div>
-              <p className="sc-hp-step-body">
-                If you don't have Docker installed:{' '}
-                <a href="https://docs.docker.com/get-docker/" target="_blank" rel="noopener noreferrer" className="sc-hp-link">
-                  docs.docker.com/get-docker
-                  <ExternalLinkIcon />
-                </a>
-              </p>
-            </div>
-
-            <div className="sc-hp-step">
-              <div className="sc-hp-step-header">
-                <span className="sc-hp-step-num">02</span>
-                <h3 className="sc-hp-step-title">Download</h3>
-              </div>
-              <div className="sc-hp-step-body">
-                <a href="/downloads/docker-compose.yml" download className="sc-hp-btn-secondary">
-                  <DownloadIcon size={16} />
-                  Download docker-compose.yml
-                </a>
-              </div>
-            </div>
-
-            <div className="sc-hp-step">
-              <div className="sc-hp-step-header">
-                <span className="sc-hp-step-num">03</span>
-                <h3 className="sc-hp-step-title">Run</h3>
-              </div>
-              <div className="sc-hp-step-body">
-                <div className="sc-hp-code-block">
-                  <code className="sc-hp-code">docker-compose up -d</code>
-                </div>
-                <p className="sc-hp-step-note">
-                  Then open <code className="sc-hp-code-inline">http://localhost:3000</code>
-                </p>
-              </div>
+            ))}
+            <div className="sc-hp-connector-chip sc-hp-placeholder">
+              More coming
             </div>
           </div>
+          <p className="sc-hp-connector-highlight">
+            Free to use in development. For early access Production use we want it to cost the equivalent of a pizza a month.
+          </p>
+          <p className="sc-hp-connector-note">
+            Catalyst Connector works independently of Catalyst Studio. Drop the JAR
+            into any existing Camunda 7 environment and the Connectors just work.
+          </p>
+        </div>
+      </section>
+
+      {/* ── Pricing ── */}
+      <section className="sc-hp-section">
+        <div className="sc-hp-narrow">
+          <h2 className="sc-hp-section-title">How pricing works</h2>
+          <p className="sc-hp-solution-text">
+            Catalyst Studio is free.
+          </p>
+          <p className="sc-hp-solution-text">
+            Connectors are free for development and testing. Every integration,
+            no limits, no time restrictions, no credit card required.
+          </p>
+          <p className="sc-hp-solution-text">
+            When you move to production, pricing is published, transparent,
+            and the same for everyone. No sales calls. No negotiation.
+            No wondering if someone else got a better deal.
+          </p>
+          <p className="sc-hp-solution-text">
+            Pricing is simple, cheap and fair. It is execution-based, paid in advance according to your estimated usage. Then you consume according to your executions — not per
+            seat, not per process, not per month. It is a few cents per connector call.
+          </p>          
+          <p className="sc-hp-solution-text">
+            We're currently in alpha, if you are an early adopter please join our alpha program, click below to send us an email and we'll get back to you.
+          </p>
+          <div style={{ marginTop: 32 }}>
+            <a
+              href="mailto:hello@get-catalyst.dev"
+              className="sc-hp-btn-primary"
+              style={{ textDecoration: 'none', display: 'inline-block' }}
+            >
+              Join the alpha
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Closing CTA ── */}
+      <section className="sc-hp-section">
+        <div className="sc-hp-narrow sc-hp-closing-cta">
+          <h2 className="sc-hp-closing-title">Ready to try it?</h2>
+          <button
+            type="button"
+            className="sc-hp-btn-primary"
+            onClick={() => onNavigate('get-started', 'Get Started')}
+          >
+            Get Started
+          </button>
         </div>
       </section>
 
@@ -219,10 +265,6 @@ export function HomePage() {
           </div>
 
           <div className="sc-hp-footer-links">
-            <a href="https://github.com/AlainJaques22/camunda-n8n-bridge" target="_blank" rel="noopener noreferrer" className="sc-hp-footer-link">
-              <GitHubIcon />
-              GitHub
-            </a>
             <a href="mailto:hello@get-catalyst.dev" className="sc-hp-footer-link">
               <MailIcon />
               hello@get-catalyst.dev
