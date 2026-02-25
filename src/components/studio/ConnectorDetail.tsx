@@ -9,9 +9,18 @@ interface ConnectorDetailProps {
 export function ConnectorDetail({ connectorId }: ConnectorDetailProps) {
   const connector = getConnector(connectorId);
   const [screenshotLoaded, setScreenshotLoaded] = useState(true);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
 
   // Reset when switching connectors so we try loading the new screenshot
-  useEffect(() => { setScreenshotLoaded(true); }, [connectorId]);
+  useEffect(() => { setScreenshotLoaded(true); setLightboxOpen(false); }, [connectorId]);
+
+  // Close lightbox on Escape
+  useEffect(() => {
+    if (!lightboxOpen) return;
+    const handleKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setLightboxOpen(false); };
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, [lightboxOpen]);
 
   const html = useMemo(() => {
     if (!connector) return '';
@@ -41,8 +50,19 @@ export function ConnectorDetail({ connectorId }: ConnectorDetailProps) {
           src={`/connectors/screenshots/${connectorId.replace('connector:', '')}.png`}
           alt={`${connector.readme.title} in Catalyst Studio`}
           className="sc-connector-screenshot"
+          onClick={() => setLightboxOpen(true)}
           onError={() => setScreenshotLoaded(false)}
         />
+      )}
+
+      {lightboxOpen && (
+        <div className="sc-lightbox-overlay" onClick={() => setLightboxOpen(false)}>
+          <img
+            src={`/connectors/screenshots/${connectorId.replace('connector:', '')}.png`}
+            alt={`${connector.readme.title} in Catalyst Studio`}
+            className="sc-lightbox-image"
+          />
+        </div>
       )}
 
       <div
