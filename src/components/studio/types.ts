@@ -5,9 +5,7 @@ export interface Tab {
 
 export interface ConnectorReadme {
   title: string;
-  description: string;
-  credentials: string;
-  links: { label: string; path: string }[];
+  markdown: string;
 }
 
 export interface ConnectorMeta {
