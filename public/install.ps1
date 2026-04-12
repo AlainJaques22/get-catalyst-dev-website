@@ -27,6 +27,9 @@ Invoke-WebRequest -Uri "$baseUrl/downloads/docker-compose.yml" -OutFile "docker-
 Write-Host "Downloading catalyst.config.json..."
 Invoke-WebRequest -Uri "$baseUrl/downloads/catalyst.config.json" -OutFile "catalyst.config.json"
 
+Write-Host "Downloading init-multi-db.sh..."
+Invoke-WebRequest -Uri "$baseUrl/downloads/init-multi-db.sh" -OutFile "init-multi-db.sh"
+
 Write-Host ""
 Write-Host "Starting Catalyst Studio..."
 docker compose up -d

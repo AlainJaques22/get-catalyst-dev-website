@@ -11,6 +11,7 @@ services:
       TZ: ${TZ:-UTC}
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./init-multi-db.sh:/docker-entrypoint-initdb.d/init-multi-db.sh:ro
     ports:
       - "5432:5432"
     healthcheck:
@@ -135,6 +136,7 @@ services:
       - TZ=${TZ:-UTC}
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - ./catalyst.config.json:/app/catalyst.config.json:rw
     networks:
       - catalyst-network
     restart: unless-stopped

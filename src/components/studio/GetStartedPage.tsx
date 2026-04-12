@@ -181,6 +181,9 @@ function LinuxSteps() {
   return (
     <>
       <Step num={1} title="Install Docker Engine (free)">
+        <p style={{ margin: '0 0 12px', fontSize: 13, color: '#666' }}>
+          Already have Docker installed? Run <code style={{ background: '#f5f5f5', padding: '2px 4px', borderRadius: '3px' }}>docker --version</code> to confirm, then skip to step 2.
+        </p>
         <p style={{ margin: '0 0 8px' }}>
           Docker Engine runs natively on Linux — no additional runtime needed.
         </p>
