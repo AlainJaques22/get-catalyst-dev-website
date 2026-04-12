@@ -112,14 +112,14 @@ function WindowsSteps() {
       </Step>
       <Step num={2} title="Download">
         <div style={{ marginTop: 4 }}>
-          <button
-            type="button"
+          <a
+            href="/downloads/docker-compose.yml"
+            download
             className="sc-hp-download-btn"
-            onClick={() => alert('Not released yet, sorry, please check back soon.')}
           >
             <span className="sc-hp-download-btn-icon"><DownloadIcon size={14} /></span>
             <span className="sc-hp-download-btn-text">Download docker-compose.yml</span>
-          </button>
+          </a>
         </div>
       </Step>
       <Step num={3} title="Open a terminal and run">
@@ -155,14 +155,14 @@ function MacSteps() {
       </Step>
       <Step num={2} title="Download">
         <div style={{ marginTop: 4 }}>
-          <button
-            type="button"
+          <a
+            href="/downloads/docker-compose.yml"
+            download
             className="sc-hp-download-btn"
-            onClick={() => alert('Not released yet, sorry, please check back soon.')}
           >
             <span className="sc-hp-download-btn-icon"><DownloadIcon size={14} /></span>
             <span className="sc-hp-download-btn-text">Download docker-compose.yml</span>
-          </button>
+          </a>
         </div>
       </Step>
       <Step num={3} title="Open Terminal and run">
@@ -196,14 +196,14 @@ function LinuxSteps() {
       </Step>
       <Step num={2} title="Download">
         <div style={{ marginTop: 4 }}>
-          <button
-            type="button"
+          <a
+            href="/downloads/docker-compose.yml"
+            download
             className="sc-hp-download-btn"
-            onClick={() => alert('Not released yet, sorry, please check back soon.')}
           >
             <span className="sc-hp-download-btn-icon"><DownloadIcon size={14} /></span>
             <span className="sc-hp-download-btn-text">Download docker-compose.yml</span>
-          </button>
+          </a>
         </div>
       </Step>
       <Step num={3} title="Run">
