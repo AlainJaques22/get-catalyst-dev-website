@@ -114,8 +114,8 @@ function WindowsSteps() {
         <p style={{ margin: '0 0 12px' }}>
           Create a new folder called <code style={{ background: '#f5f5f5', padding: '2px 6px', borderRadius: '4px' }}>catalyst</code> (e.g., in Documents or on your Desktop).
         </p>
-        <p style={{ margin: '0 0 12px' }}>Download this file into that folder:</p>
-        <div style={{ marginTop: 4 }}>
+        <p style={{ margin: '0 0 12px' }}>Download both files into that folder:</p>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: 4 }}>
           <a
             href="/downloads/docker-compose.yml"
             download
@@ -123,6 +123,14 @@ function WindowsSteps() {
           >
             <span className="sc-hp-download-btn-icon"><DownloadIcon size={14} /></span>
             <span className="sc-hp-download-btn-text">Download docker-compose.yml</span>
+          </a>
+          <a
+            href="/downloads/catalyst.config.json"
+            download
+            className="sc-hp-download-btn"
+          >
+            <span className="sc-hp-download-btn-icon"><DownloadIcon size={14} /></span>
+            <span className="sc-hp-download-btn-text">Download catalyst.config.json</span>
           </a>
         </div>
       </Step>
@@ -170,8 +178,8 @@ function MacSteps() {
         <p style={{ margin: '0 0 12px' }}>
           Create a new folder called <code style={{ background: '#f5f5f5', padding: '2px 6px', borderRadius: '4px' }}>catalyst</code> in your home folder (so the next step works without changes).
         </p>
-        <p style={{ margin: '0 0 12px' }}>Download this file into that folder:</p>
-        <div style={{ marginTop: 4 }}>
+        <p style={{ margin: '0 0 12px' }}>Download both files into that folder:</p>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: 4 }}>
           <a
             href="/downloads/docker-compose.yml"
             download
@@ -179,6 +187,14 @@ function MacSteps() {
           >
             <span className="sc-hp-download-btn-icon"><DownloadIcon size={14} /></span>
             <span className="sc-hp-download-btn-text">Download docker-compose.yml</span>
+          </a>
+          <a
+            href="/downloads/catalyst.config.json"
+            download
+            className="sc-hp-download-btn"
+          >
+            <span className="sc-hp-download-btn-icon"><DownloadIcon size={14} /></span>
+            <span className="sc-hp-download-btn-text">Download catalyst.config.json</span>
           </a>
         </div>
       </Step>
