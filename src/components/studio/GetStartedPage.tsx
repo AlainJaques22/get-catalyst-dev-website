@@ -91,6 +91,67 @@ function Step({ num, title, children }: { num: number; title: string; children: 
   );
 }
 
+function InstallStep({ terminalHint, command }: { terminalHint: React.ReactNode; command: string }) {
+  return (
+    <Step num={2} title="Install Catalyst Studio">
+      <div className="sc-gs-install-options">
+
+        <div className="sc-gs-install-option">
+          <div className="sc-gs-install-option-header">
+            Option 1 — One-line installer
+            <span className="sc-gs-install-option-badge">Recommended</span>
+          </div>
+          <div className="sc-gs-install-option-body">
+            <p style={{ margin: '0 0 8px' }}>{terminalHint}</p>
+            <div className="sc-hp-code-block">
+              <code className="sc-hp-code">{command}</code>
+            </div>
+            <p style={{ margin: '8px 0 0', fontSize: 12, color: '#666' }}>
+              Creates a <code style={{ background: '#1a1a1a', padding: '2px 4px', borderRadius: '3px' }}>catalyst</code> folder, downloads all required files, starts the stack, and opens your browser automatically.
+            </p>
+          </div>
+        </div>
+
+        <div className="sc-gs-install-option">
+          <div className="sc-gs-install-option-header">
+            Option 2 — Manual install
+          </div>
+          <div className="sc-gs-install-option-body">
+            <ol style={{ margin: '0 0 12px', paddingLeft: '1.2em', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              <li>Create a folder called <code style={{ background: '#1a1a1a', padding: '2px 4px', borderRadius: '3px' }}>catalyst</code> anywhere convenient.</li>
+              <li>Download all three files below into that folder:</li>
+            </ol>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '12px' }}>
+              <a href="/downloads/docker-compose.yml" download className="sc-hp-download-btn">
+                <span className="sc-hp-download-btn-icon"><DownloadIcon size={14} /></span>
+                <span className="sc-hp-download-btn-text">docker-compose.yml</span>
+              </a>
+              <a href="/downloads/catalyst.config.json" download className="sc-hp-download-btn">
+                <span className="sc-hp-download-btn-icon"><DownloadIcon size={14} /></span>
+                <span className="sc-hp-download-btn-text">catalyst.config.json</span>
+              </a>
+              <a href="/downloads/init-multi-db.sh" download className="sc-hp-download-btn">
+                <span className="sc-hp-download-btn-icon"><DownloadIcon size={14} /></span>
+                <span className="sc-hp-download-btn-text">init-multi-db.sh</span>
+              </a>
+            </div>
+            <ol start={3} style={{ margin: '0', paddingLeft: '1.2em', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              <li>Open a terminal in the <code style={{ background: '#1a1a1a', padding: '2px 4px', borderRadius: '3px' }}>catalyst</code> folder and run:</li>
+            </ol>
+            <div className="sc-hp-code-block" style={{ margin: '8px 0' }}>
+              <code className="sc-hp-code">docker compose up -d</code>
+            </div>
+            <ol start={4} style={{ margin: '0', paddingLeft: '1.2em', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              <li>Wait a minute for services to start, then open your browser and go to <code style={{ background: '#1a1a1a', padding: '2px 4px', borderRadius: '3px' }}>http://localhost</code>.</li>
+            </ol>
+          </div>
+        </div>
+
+      </div>
+    </Step>
+  );
+}
+
 function WindowsSteps() {
   return (
     <>
@@ -110,26 +171,10 @@ function WindowsSteps() {
           (licence required for commercial use)
         </p>
       </Step>
-      <Step num={2} title="Run the installer">
-        <p style={{ margin: '0 0 8px' }}>Open PowerShell from the Start menu and paste this command:</p>
-        <div className="sc-hp-code-block">
-          <code className="sc-hp-code">irm https://get-catalyst.dev/install.ps1 | iex</code>
-        </div>
-        <p style={{ margin: '12px 0 0', fontSize: 12, color: '#666' }}>
-          This creates a <code style={{ background: '#f5f5f5', padding: '2px 4px', borderRadius: '3px' }}>catalyst</code> folder in your home directory, downloads the required files, starts the stack, and opens your browser automatically.
-        </p>
-        <p style={{ margin: '16px 0 8px', fontSize: 13 }}>Or download manually:</p>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-          <a href="/downloads/docker-compose.yml" download className="sc-hp-download-btn">
-            <span className="sc-hp-download-btn-icon"><DownloadIcon size={14} /></span>
-            <span className="sc-hp-download-btn-text">Download docker-compose.yml</span>
-          </a>
-          <a href="/downloads/catalyst.config.json" download className="sc-hp-download-btn">
-            <span className="sc-hp-download-btn-icon"><DownloadIcon size={14} /></span>
-            <span className="sc-hp-download-btn-text">Download catalyst.config.json</span>
-          </a>
-        </div>
-      </Step>
+      <InstallStep
+        terminalHint={<>Open PowerShell from the Start menu and paste:</>}
+        command="irm https://get-catalyst.dev/install.ps1 | iex"
+      />
     </>
   );
 }
@@ -153,26 +198,10 @@ function MacSteps() {
           (licence required for commercial use)
         </p>
       </Step>
-      <Step num={2} title="Run the installer">
-        <p style={{ margin: '0 0 8px' }}>Open Terminal (<code style={{ background: '#f5f5f5', padding: '2px 4px', borderRadius: '3px' }}>Cmd+Space</code>, type "Terminal", press Enter) and paste this command:</p>
-        <div className="sc-hp-code-block">
-          <code className="sc-hp-code">curl -fsSL https://get-catalyst.dev/install.sh | bash</code>
-        </div>
-        <p style={{ margin: '12px 0 0', fontSize: 12, color: '#666' }}>
-          This creates a <code style={{ background: '#f5f5f5', padding: '2px 4px', borderRadius: '3px' }}>catalyst</code> folder in your home directory, downloads the required files, starts the stack, and opens your browser automatically.
-        </p>
-        <p style={{ margin: '16px 0 8px', fontSize: 13 }}>Or download manually:</p>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-          <a href="/downloads/docker-compose.yml" download className="sc-hp-download-btn">
-            <span className="sc-hp-download-btn-icon"><DownloadIcon size={14} /></span>
-            <span className="sc-hp-download-btn-text">Download docker-compose.yml</span>
-          </a>
-          <a href="/downloads/catalyst.config.json" download className="sc-hp-download-btn">
-            <span className="sc-hp-download-btn-icon"><DownloadIcon size={14} /></span>
-            <span className="sc-hp-download-btn-text">Download catalyst.config.json</span>
-          </a>
-        </div>
-      </Step>
+      <InstallStep
+        terminalHint={<>Open Terminal (<code style={{ background: '#1a1a1a', padding: '2px 4px', borderRadius: '3px' }}>Cmd+Space</code>, type "Terminal", Enter) and paste:</>}
+        command="curl -fsSL https://get-catalyst.dev/install.sh | bash"
+      />
     </>
   );
 }
@@ -197,26 +226,10 @@ function LinuxSteps() {
           </a>
         </p>
       </Step>
-      <Step num={2} title="Run the installer">
-        <p style={{ margin: '0 0 8px' }}>Open Terminal (<code style={{ background: '#f5f5f5', padding: '2px 4px', borderRadius: '3px' }}>Ctrl+Alt+T</code> on Ubuntu/Debian, or search your app launcher for "Terminal") and paste this command:</p>
-        <div className="sc-hp-code-block">
-          <code className="sc-hp-code">curl -fsSL https://get-catalyst.dev/install.sh | bash</code>
-        </div>
-        <p style={{ margin: '12px 0 0', fontSize: 12, color: '#666' }}>
-          This creates a <code style={{ background: '#f5f5f5', padding: '2px 4px', borderRadius: '3px' }}>catalyst</code> folder in your home directory, downloads the required files, starts the stack, and opens your browser automatically.
-        </p>
-        <p style={{ margin: '16px 0 8px', fontSize: 13 }}>Or download manually:</p>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-          <a href="/downloads/docker-compose.yml" download className="sc-hp-download-btn">
-            <span className="sc-hp-download-btn-icon"><DownloadIcon size={14} /></span>
-            <span className="sc-hp-download-btn-text">Download docker-compose.yml</span>
-          </a>
-          <a href="/downloads/catalyst.config.json" download className="sc-hp-download-btn">
-            <span className="sc-hp-download-btn-icon"><DownloadIcon size={14} /></span>
-            <span className="sc-hp-download-btn-text">Download catalyst.config.json</span>
-          </a>
-        </div>
-      </Step>
+      <InstallStep
+        terminalHint={<>Open Terminal (<code style={{ background: '#1a1a1a', padding: '2px 4px', borderRadius: '3px' }}>Ctrl+Alt+T</code> on Ubuntu/Debian, or search your app launcher for "Terminal") and paste:</>}
+        command="curl -fsSL https://get-catalyst.dev/install.sh | bash"
+      />
     </>
   );
 }
