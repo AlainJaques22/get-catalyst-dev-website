@@ -110,7 +110,11 @@ function WindowsSteps() {
           (licence required for commercial use)
         </p>
       </Step>
-      <Step num={2} title="Download">
+      <Step num={2} title="Create a folder and download">
+        <p style={{ margin: '0 0 12px' }}>
+          Create a new folder called <code style={{ background: '#f5f5f5', padding: '2px 6px', borderRadius: '4px' }}>catalyst</code> (e.g., in Documents or on your Desktop).
+        </p>
+        <p style={{ margin: '0 0 12px' }}>Download this file into that folder:</p>
         <div style={{ marginTop: 4 }}>
           <a
             href="/downloads/docker-compose.yml"
@@ -122,7 +126,15 @@ function WindowsSteps() {
           </a>
         </div>
       </Step>
-      <Step num={3} title="Open a terminal and run">
+      <Step num={3} title="Open PowerShell and start Catalyst">
+        <p style={{ margin: '0 0 12px' }}>
+          A terminal is a command-line tool where you type commands to run programs. To open PowerShell in your <code style={{ background: '#f5f5f5', padding: '2px 6px', borderRadius: '4px' }}>catalyst</code> folder:
+        </p>
+        <ul style={{ margin: '0 0 12px', paddingLeft: '20px' }}>
+          <li><strong>Windows 11:</strong> Right-click the folder → "Open in Terminal"</li>
+          <li><strong>Windows 10:</strong> Shift + Right-click the folder → "Open PowerShell here"</li>
+        </ul>
+        <p style={{ margin: '0 0 8px' }}>Then type this command and press Enter:</p>
         <div className="sc-hp-code-block">
           <code className="sc-hp-code">docker compose up -d</code>
         </div>
@@ -153,7 +165,11 @@ function MacSteps() {
           (licence required for commercial use)
         </p>
       </Step>
-      <Step num={2} title="Download">
+      <Step num={2} title="Create a folder and download">
+        <p style={{ margin: '0 0 12px' }}>
+          Create a new folder called <code style={{ background: '#f5f5f5', padding: '2px 6px', borderRadius: '4px' }}>catalyst</code> anywhere convenient (e.g., your home folder or Desktop).
+        </p>
+        <p style={{ margin: '0 0 12px' }}>Download this file into that folder:</p>
         <div style={{ marginTop: 4 }}>
           <a
             href="/downloads/docker-compose.yml"
@@ -165,7 +181,15 @@ function MacSteps() {
           </a>
         </div>
       </Step>
-      <Step num={3} title="Open Terminal and run">
+      <Step num={3} title="Open Terminal and start Catalyst">
+        <p style={{ margin: '0 0 12px' }}>
+          A terminal is a command-line tool where you type commands to run programs. To open Terminal on macOS, press <code style={{ background: '#f5f5f5', padding: '2px 6px', borderRadius: '4px' }}>Cmd+Space</code>, type "Terminal", and press Enter.
+        </p>
+        <p style={{ margin: '0 0 8px' }}>Then navigate to your <code style={{ background: '#f5f5f5', padding: '2px 6px', borderRadius: '4px' }}>catalyst</code> folder:</p>
+        <div className="sc-hp-code-block">
+          <code className="sc-hp-code">cd ~/catalyst</code>
+        </div>
+        <p style={{ margin: '12px 0 8px' }}>Then start Catalyst Studio:</p>
         <div className="sc-hp-code-block">
           <code className="sc-hp-code">docker compose up -d</code>
         </div>
@@ -194,7 +218,14 @@ function LinuxSteps() {
           </a>
         </p>
       </Step>
-      <Step num={2} title="Download">
+      <Step num={2} title="Create a folder and download">
+        <p style={{ margin: '0 0 12px' }}>
+          Create a new folder called <code style={{ background: '#f5f5f5', padding: '2px 6px', borderRadius: '4px' }}>catalyst</code> in your home directory by running:
+        </p>
+        <div className="sc-hp-code-block">
+          <code className="sc-hp-code">mkdir ~/catalyst</code>
+        </div>
+        <p style={{ margin: '12px 0' }}>Download this file into that folder:</p>
         <div style={{ marginTop: 4 }}>
           <a
             href="/downloads/docker-compose.yml"
@@ -206,7 +237,15 @@ function LinuxSteps() {
           </a>
         </div>
       </Step>
-      <Step num={3} title="Run">
+      <Step num={3} title="Open a terminal and start Catalyst">
+        <p style={{ margin: '0 0 12px' }}>
+          A terminal is a command-line tool where you type commands to run programs. Open Terminal by right-clicking on your desktop or searching your app launcher for "Terminal".
+        </p>
+        <p style={{ margin: '0 0 8px' }}>Then navigate to the <code style={{ background: '#f5f5f5', padding: '2px 6px', borderRadius: '4px' }}>catalyst</code> folder:</p>
+        <div className="sc-hp-code-block">
+          <code className="sc-hp-code">cd ~/catalyst</code>
+        </div>
+        <p style={{ margin: '12px 0 8px' }}>Then start Catalyst Studio:</p>
         <div className="sc-hp-code-block">
           <code className="sc-hp-code">docker compose up -d</code>
         </div>
