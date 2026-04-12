@@ -128,12 +128,13 @@ function WindowsSteps() {
       </Step>
       <Step num={3} title="Open PowerShell and start Catalyst">
         <p style={{ margin: '0 0 12px' }}>
-          A terminal is a command-line tool where you type commands to run programs. To open PowerShell in your <code style={{ background: '#f5f5f5', padding: '2px 6px', borderRadius: '4px' }}>catalyst</code> folder:
+          A terminal is a command-line window where you type commands to run programs. To open PowerShell inside your <code style={{ background: '#f5f5f5', padding: '2px 6px', borderRadius: '4px' }}>catalyst</code> folder:
         </p>
-        <ul style={{ margin: '0 0 12px', paddingLeft: '20px' }}>
-          <li><strong>Windows 11:</strong> Right-click the folder → "Open in Terminal"</li>
-          <li><strong>Windows 10:</strong> Shift + Right-click the folder → "Open PowerShell here"</li>
-        </ul>
+        <ol style={{ margin: '0 0 12px', paddingLeft: '20px' }}>
+          <li>Open the <code style={{ background: '#f5f5f5', padding: '2px 6px', borderRadius: '4px' }}>catalyst</code> folder in File Explorer</li>
+          <li>Click the address bar at the top (the folder path will highlight)</li>
+          <li>Type <code style={{ background: '#f5f5f5', padding: '2px 6px', borderRadius: '4px' }}>powershell</code> and press Enter</li>
+        </ol>
         <p style={{ margin: '0 0 8px' }}>Then type this command and press Enter:</p>
         <div className="sc-hp-code-block">
           <code className="sc-hp-code">docker compose up -d</code>
@@ -167,7 +168,7 @@ function MacSteps() {
       </Step>
       <Step num={2} title="Create a folder and download">
         <p style={{ margin: '0 0 12px' }}>
-          Create a new folder called <code style={{ background: '#f5f5f5', padding: '2px 6px', borderRadius: '4px' }}>catalyst</code> anywhere convenient (e.g., your home folder or Desktop).
+          Create a new folder called <code style={{ background: '#f5f5f5', padding: '2px 6px', borderRadius: '4px' }}>catalyst</code> in your home folder (so the next step works without changes).
         </p>
         <p style={{ margin: '0 0 12px' }}>Download this file into that folder:</p>
         <div style={{ marginTop: 4 }}>
@@ -239,7 +240,7 @@ function LinuxSteps() {
       </Step>
       <Step num={3} title="Open a terminal and start Catalyst">
         <p style={{ margin: '0 0 12px' }}>
-          A terminal is a command-line tool where you type commands to run programs. Open Terminal by right-clicking on your desktop or searching your app launcher for "Terminal".
+          A terminal is a command-line window where you type commands to run programs. Open Terminal by searching your app launcher for "Terminal" (or press <code style={{ background: '#f5f5f5', padding: '2px 6px', borderRadius: '4px' }}>Ctrl+Alt+T</code> on Ubuntu/Debian).
         </p>
         <p style={{ margin: '0 0 8px' }}>Then navigate to the <code style={{ background: '#f5f5f5', padding: '2px 6px', borderRadius: '4px' }}>catalyst</code> folder:</p>
         <div className="sc-hp-code-block">
