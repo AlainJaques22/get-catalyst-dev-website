@@ -70,7 +70,7 @@ services:
     restart: unless-stopped
 
   catalyst-operaton:
-    image: operaton/operaton:1.0.3
+    image: alainjaques22/catalyst-operaton:latest
     container_name: catalyst-operaton
     depends_on:
       postgres:
@@ -146,6 +146,8 @@ services:
     container_name: catalyst-caddy
     ports:
       - "80:80"
+    volumes:
+      - camunda_logs:/usr/share/caddy/camunda-logs:ro
     networks:
       - catalyst-network
     restart: unless-stopped
