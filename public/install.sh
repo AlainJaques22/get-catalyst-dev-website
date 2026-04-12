@@ -28,6 +28,10 @@ curl -fsSL "$BASE_URL/downloads/docker-compose.yml" -o docker-compose.yml
 echo "Downloading catalyst.config.json..."
 curl -fsSL "$BASE_URL/downloads/catalyst.config.json" -o catalyst.config.json
 
+echo "Downloading init-multi-db.sh..."
+curl -fsSL "$BASE_URL/downloads/init-multi-db.sh" -o init-multi-db.sh
+chmod +x init-multi-db.sh
+
 echo ""
 echo "Starting Catalyst Studio..."
 docker compose up -d
