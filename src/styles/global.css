@@ -915,6 +915,25 @@ body {
   border-top: 1px solid var(--border);
 }
 
+.sc-gs-cleanup {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+
+.sc-gs-cleanup-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin: 0 0 8px;
+}
+
+.sc-gs-cleanup-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 0 0 12px;
+}
+
 /* Footer */
 .sc-hp-footer {
   border-top: 1px solid var(--border);
