@@ -5,6 +5,7 @@ import { GetStartedPage } from './GetStartedPage';
 import { ConnectorsGrid } from './ConnectorsGrid';
 import { ConnectorDetail } from './ConnectorDetail';
 import { PlaceholderPage } from './PlaceholderPage';
+import { WhyDockerPage } from './WhyDockerPage';
 
 interface ContentAreaProps {
   state: ShowcaseState;
@@ -109,6 +110,9 @@ export function ContentArea({ state, dispatch }: ContentAreaProps) {
     }
     if (activeView === 'get-started') {
       return <GetStartedPage onNavigate={navigate} />;
+    }
+    if (activeView === 'why-docker') {
+      return <WhyDockerPage onNavigate={navigate} />;
     }
     if (activeView === 'connectors') {
       return (
