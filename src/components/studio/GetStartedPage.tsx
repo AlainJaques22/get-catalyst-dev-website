@@ -91,7 +91,7 @@ function Step({ num, title, children }: { num: number; title: string; children: 
   );
 }
 
-function InstallStep({ terminalHint, command }: { terminalHint: React.ReactNode; command: string }) {
+function InstallStep({ terminalHint, command, scriptUrl }: { terminalHint: React.ReactNode; command: string; scriptUrl: string }) {
   return (
     <Step num={2} title="Install Catalyst Studio">
       <p style={{ margin: '0 0 12px', fontSize: 13, color: '#888' }}>
@@ -111,6 +111,12 @@ function InstallStep({ terminalHint, command }: { terminalHint: React.ReactNode;
             </div>
             <p style={{ margin: '8px 0 0', fontSize: 12, color: '#666' }}>
               Creates a <code style={{ background: '#1a1a1a', padding: '2px 4px', borderRadius: '3px' }}>catalyst</code> folder, downloads all required files, starts the stack, and opens your browser automatically.
+            </p>
+            <p style={{ margin: '6px 0 0', fontSize: 12, color: '#666' }}>
+              Not sure what this does?{' '}
+              <a href={scriptUrl} target="_blank" rel="noopener noreferrer" className="sc-hp-link">
+                View the install script <ExternalLinkIcon />
+              </a>
             </p>
           </div>
         </div>
@@ -156,61 +162,63 @@ function InstallStep({ terminalHint, command }: { terminalHint: React.ReactNode;
   );
 }
 
-function WindowsSteps() {
+function ContainerRuntimeStep({ onNavigate }: { onNavigate: (id: string, label: string) => void }) {
+  return (
+    <Step num={1} title="Install a container runtime">
+      <p style={{ margin: '0 0 8px' }}>
+        Install{' '}
+        <a href="https://rancherdesktop.io/" target="_blank" rel="noopener noreferrer" className="sc-hp-link">
+          <RancherIcon /> Rancher Desktop <ExternalLinkIcon />
+        </a>{' '}
+        (free for commercial use)
+      </p>
+      <p style={{ margin: '0 0 12px' }}>
+        Or{' '}
+        <a href="https://docs.docker.com/get-docker/" target="_blank" rel="noopener noreferrer" className="sc-hp-link">
+          <DockerIcon /> Docker Desktop <ExternalLinkIcon />
+        </a>{' '}
+        (licence required for commercial use)
+      </p>
+      <p style={{ margin: 0, fontSize: 12, color: '#666' }}>
+        Not sure what Docker or Rancher Desktop are?{' '}
+        <button
+          onClick={() => onNavigate('why-docker', 'Why Docker?')}
+          style={{ background: 'none', border: 'none', padding: 0, color: '#4a9eff', cursor: 'pointer', fontSize: 12, textDecoration: 'underline' }}
+        >
+          Learn what they are and why Catalyst uses them
+        </button>
+      </p>
+    </Step>
+  );
+}
+
+function WindowsSteps({ onNavigate }: { onNavigate: (id: string, label: string) => void }) {
   return (
     <>
-      <Step num={1} title="Install a container runtime">
-        <p style={{ margin: '0 0 8px' }}>
-          Install{' '}
-          <a href="https://rancherdesktop.io/" target="_blank" rel="noopener noreferrer" className="sc-hp-link">
-            <RancherIcon /> Rancher Desktop <ExternalLinkIcon />
-          </a>{' '}
-          (free for commercial use)
-        </p>
-        <p style={{ margin: 0 }}>
-          Or{' '}
-          <a href="https://docs.docker.com/get-docker/" target="_blank" rel="noopener noreferrer" className="sc-hp-link">
-            <DockerIcon /> Docker Desktop <ExternalLinkIcon />
-          </a>{' '}
-          (licence required for commercial use)
-        </p>
-      </Step>
+      <ContainerRuntimeStep onNavigate={onNavigate} />
       <InstallStep
         terminalHint={<>Open PowerShell from the Start menu and paste:</>}
         command="irm https://get-catalyst.dev/install.ps1 | iex"
+        scriptUrl="/install.ps1"
       />
     </>
   );
 }
 
-function MacSteps() {
+function MacSteps({ onNavigate }: { onNavigate: (id: string, label: string) => void }) {
   return (
     <>
-      <Step num={1} title="Install a container runtime">
-        <p style={{ margin: '0 0 8px' }}>
-          Install{' '}
-          <a href="https://rancherdesktop.io/" target="_blank" rel="noopener noreferrer" className="sc-hp-link">
-            <RancherIcon /> Rancher Desktop <ExternalLinkIcon />
-          </a>{' '}
-          (free for commercial use)
-        </p>
-        <p style={{ margin: 0 }}>
-          Or{' '}
-          <a href="https://docs.docker.com/get-docker/" target="_blank" rel="noopener noreferrer" className="sc-hp-link">
-            <DockerIcon /> Docker Desktop <ExternalLinkIcon />
-          </a>{' '}
-          (licence required for commercial use)
-        </p>
-      </Step>
+      <ContainerRuntimeStep onNavigate={onNavigate} />
       <InstallStep
         terminalHint={<>Open Terminal (<code style={{ background: '#1a1a1a', padding: '2px 4px', borderRadius: '3px' }}>Cmd+Space</code>, type "Terminal", Enter) and paste:</>}
         command="curl -fsSL https://get-catalyst.dev/install.sh | bash"
+        scriptUrl="/install.sh"
       />
     </>
   );
 }
 
-function LinuxSteps() {
+function LinuxSteps({ onNavigate }: { onNavigate: (id: string, label: string) => void }) {
   return (
     <>
       <Step num={1} title="Install Docker Engine (free)">
@@ -223,16 +231,26 @@ function LinuxSteps() {
         <div className="sc-hp-code-block">
           <code className="sc-hp-code">curl -fsSL https://get.docker.com | sudo sh</code>
         </div>
-        <p style={{ margin: '8px 0 0', fontSize: 12 }}>
+        <p style={{ margin: '8px 0 8px', fontSize: 12 }}>
           Supports Ubuntu, Debian, Mint, Fedora, RHEL, CentOS and more.{' '}
           <a href="https://docs.docker.com/engine/install/" target="_blank" rel="noopener noreferrer" className="sc-hp-link">
             Full install guide <ExternalLinkIcon />
           </a>
         </p>
+        <p style={{ margin: 0, fontSize: 12, color: '#666' }}>
+          New to Docker?{' '}
+          <button
+            onClick={() => onNavigate('why-docker', 'Why Docker?')}
+            style={{ background: 'none', border: 'none', padding: 0, color: '#4a9eff', cursor: 'pointer', fontSize: 12, textDecoration: 'underline' }}
+          >
+            Learn what it is and why Catalyst uses it
+          </button>
+        </p>
       </Step>
       <InstallStep
         terminalHint={<>Open Terminal (<code style={{ background: '#1a1a1a', padding: '2px 4px', borderRadius: '3px' }}>Ctrl+Alt+T</code> on Ubuntu/Debian, or search your app launcher for "Terminal") and paste:</>}
         command="curl -fsSL https://get-catalyst.dev/install.sh | bash"
+        scriptUrl="/install.sh"
       />
     </>
   );
@@ -278,9 +296,9 @@ export function GetStartedPage({ onNavigate }: GetStartedPageProps) {
           ))}
         </div>
 
-        {platform === 'windows' && <WindowsSteps />}
-        {platform === 'macos' && <MacSteps />}
-        {platform === 'linux' && <LinuxSteps />}
+        {platform === 'windows' && <WindowsSteps onNavigate={onNavigate} />}
+        {platform === 'macos' && <MacSteps onNavigate={onNavigate} />}
+        {platform === 'linux' && <LinuxSteps onNavigate={onNavigate} />}
 
         <div className="sc-gs-cleanup">
           <h2 className="sc-gs-section-title">Remove</h2>
