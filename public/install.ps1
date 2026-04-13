@@ -35,7 +35,36 @@ Write-Host "Pulling latest images..."
 docker compose pull
 
 Write-Host ""
-Write-Host "Starting Catalyst Studio (press Ctrl+C to stop)..."
-Write-Host "Once services are running, open your browser at: http://localhost"
+Write-Host "Starting Catalyst Studio..."
+docker compose up -d
+
+# Wait for Caddy to be ready
 Write-Host ""
-docker compose up
+Write-Host "Waiting for services to start (this may take a minute)..."
+$maxWait = 120
+$elapsed = 0
+while ($elapsed -lt $maxWait) {
+  try {
+    $response = Invoke-WebRequest -Uri "http://localhost" -UseBasicParsing -TimeoutSec 2 -ErrorAction Stop
+    if ($response.StatusCode -eq 200) { break }
+  } catch {}
+  Write-Host -NoNewline "."
+  Start-Sleep -Seconds 3
+  $elapsed += 3
+}
+
+Write-Host ""
+Write-Host ""
+
+if ($elapsed -ge $maxWait) {
+  Write-Host "Services are taking longer than expected."
+  Write-Host "Check status with: docker compose ps"
+  Write-Host "Then visit http://localhost when ready."
+  exit 0
+}
+
+Write-Host "Catalyst Studio is ready! Opening http://localhost ..."
+Write-Host "Streaming logs below — press Ctrl+C to stop following (the stack keeps running)."
+Write-Host ""
+Start-Process "http://localhost"
+docker compose logs -f
