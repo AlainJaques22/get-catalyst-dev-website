@@ -121,7 +121,7 @@ function InstallStep({ terminalHint, command }: { terminalHint: React.ReactNode;
               <li>Create a folder called <code style={{ background: '#1a1a1a', padding: '2px 4px', borderRadius: '3px' }}>catalyst</code> anywhere convenient.</li>
               <li>Download all three files below into that folder:</li>
             </ol>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '12px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '4px' }}>
               <a href="/downloads/docker-compose.yml" download className="sc-hp-download-btn">
                 <span className="sc-hp-download-btn-icon"><DownloadIcon size={14} /></span>
                 <span className="sc-hp-download-btn-text">docker-compose.yml</span>
@@ -135,6 +135,7 @@ function InstallStep({ terminalHint, command }: { terminalHint: React.ReactNode;
                 <span className="sc-hp-download-btn-text">init-multi-db.sh</span>
               </a>
             </div>
+            <p style={{ margin: '0 0 12px', fontSize: 11, color: '#888' }}>Stack v0.1.0 — 13 Apr 2026</p>
             <ol start={3} style={{ margin: '0', paddingLeft: '1.2em', display: 'flex', flexDirection: 'column', gap: '8px' }}>
               <li>Open a terminal in the <code style={{ background: '#1a1a1a', padding: '2px 4px', borderRadius: '3px' }}>catalyst</code> folder and run:</li>
             </ol>
