@@ -262,6 +262,8 @@ export function GetStartedPage({ onNavigate }: GetStartedPageProps) {
           has a licence.
         </p>
 
+        <h2 className="sc-gs-section-title">Install</h2>
+
         <div className="sc-gs-tabs">
           {tabConfig.map(tab => (
             <button
@@ -280,15 +282,8 @@ export function GetStartedPage({ onNavigate }: GetStartedPageProps) {
         {platform === 'macos' && <MacSteps />}
         {platform === 'linux' && <LinuxSteps />}
 
-        <p className="sc-gs-note">
-          Having trouble? Email us at{' '}
-          <a href="mailto:hello@get-catalyst.dev" className="sc-hp-link">
-            <MailIcon /> hello@get-catalyst.dev
-          </a>
-        </p>
-
         <div className="sc-gs-cleanup">
-          <h2 className="sc-gs-cleanup-title">Remove Catalyst Studio</h2>
+          <h2 className="sc-gs-section-title">Remove</h2>
           <p className="sc-gs-cleanup-desc">
             Run the following in your terminal to stop all containers, remove images, delete volumes, and clean up the install folder.
           </p>
@@ -324,6 +319,13 @@ rm -rf ~/catalyst
 docker system prune -f`}</code>
             </div>
           )}
+
+          <p className="sc-gs-note" style={{ marginTop: 24, paddingTop: 20 }}>
+            Having trouble? Email us at{' '}
+            <a href="mailto:hello@get-catalyst.dev" className="sc-hp-link">
+              <MailIcon /> hello@get-catalyst.dev
+            </a>
+          </p>
         </div>
       </div>
 

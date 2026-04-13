@@ -915,17 +915,17 @@ body {
   border-top: 1px solid var(--border);
 }
 
-.sc-gs-cleanup {
-  margin-top: 40px;
+.sc-gs-section-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 40px 0 20px;
   padding-top: 24px;
   border-top: 1px solid var(--border);
 }
 
-.sc-gs-cleanup-title {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--text-muted);
-  margin: 0 0 8px;
+.sc-gs-cleanup {
+  margin-top: 0;
 }
 
 .sc-gs-cleanup-desc {

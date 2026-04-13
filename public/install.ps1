@@ -40,7 +40,7 @@ docker compose up -d
 
 # Wait for Caddy to be ready
 Write-Host ""
-Write-Host "Waiting for services to start (this may take a few minutes — all is fine)..."
+Write-Host "Waiting for services to start (this may take a few minutes - all is fine, please be patient)..."
 $maxWait = 300
 $elapsed = 0
 $ready = $false

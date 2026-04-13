@@ -42,7 +42,7 @@ docker compose up -d
 
 # Wait for Caddy to be ready
 echo ""
-echo "Waiting for services to start (this may take a few minutes — all is fine)..."
+echo "Waiting for services to start (this may take a few minutes - all is fine, please be patient)..."
 MAX_WAIT=300
 ELAPSED=0
 until curl -sf http://localhost > /dev/null 2>&1; do
