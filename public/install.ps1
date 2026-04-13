@@ -40,13 +40,14 @@ docker compose up -d
 
 # Wait for Caddy to be ready
 Write-Host ""
-Write-Host "Waiting for services to start (this may take a minute)..."
-$maxWait = 120
+Write-Host "Waiting for services to start (this may take a few minutes — all is fine)..."
+$maxWait = 300
 $elapsed = 0
+$ready = $false
 while ($elapsed -lt $maxWait) {
   try {
     $response = Invoke-WebRequest -Uri "http://localhost" -UseBasicParsing -TimeoutSec 2 -ErrorAction Stop
-    if ($response.StatusCode -eq 200) { break }
+    if ($response.StatusCode -eq 200) { $ready = $true; break }
   } catch {}
   Write-Host -NoNewline "."
   Start-Sleep -Seconds 3
@@ -56,11 +57,8 @@ while ($elapsed -lt $maxWait) {
 Write-Host ""
 Write-Host ""
 
-if ($elapsed -ge $maxWait) {
-  Write-Host "Services are taking longer than expected."
-  Write-Host "Check status with: docker compose ps"
-  Write-Host "Then visit http://localhost when ready."
-  exit 0
+if (-not $ready) {
+  Write-Host "Services are taking longer than expected — check logs below for details."
 }
 
 Write-Host "Catalyst Studio is ready! Opening http://localhost ..."

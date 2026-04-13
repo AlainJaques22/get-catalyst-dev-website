@@ -42,16 +42,14 @@ docker compose up -d
 
 # Wait for Caddy to be ready
 echo ""
-echo "Waiting for services to start (this may take a minute)..."
-MAX_WAIT=120
+echo "Waiting for services to start (this may take a few minutes — all is fine)..."
+MAX_WAIT=300
 ELAPSED=0
 until curl -sf http://localhost > /dev/null 2>&1; do
   if [ $ELAPSED -ge $MAX_WAIT ]; then
     echo ""
-    echo "Services are taking longer than expected."
-    echo "Check status with: docker compose ps"
-    echo "Then visit http://localhost when ready."
-    exit 0
+    echo "Services are taking longer than expected — check logs below for details."
+    break
   fi
   printf "."
   sleep 3

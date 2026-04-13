@@ -94,6 +94,9 @@ function Step({ num, title, children }: { num: number; title: string; children: 
 function InstallStep({ terminalHint, command }: { terminalHint: React.ReactNode; command: string }) {
   return (
     <Step num={2} title="Install Catalyst Studio">
+      <p style={{ margin: '0 0 12px', fontSize: 13, color: '#888' }}>
+        First install takes around 5–10 minutes depending on your internet speed — Docker needs to pull the images before starting.
+      </p>
       <div className="sc-gs-install-options">
 
         <div className="sc-gs-install-option">
