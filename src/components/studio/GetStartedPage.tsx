@@ -286,6 +286,45 @@ export function GetStartedPage({ onNavigate }: GetStartedPageProps) {
             <MailIcon /> hello@get-catalyst.dev
           </a>
         </p>
+
+        <div className="sc-gs-cleanup">
+          <h2 className="sc-gs-cleanup-title">Remove Catalyst Studio</h2>
+          <p className="sc-gs-cleanup-desc">
+            Run the following in your terminal to stop all containers, remove images, delete volumes, and clean up the install folder.
+          </p>
+          {platform === 'windows' ? (
+            <div className="sc-hp-code-block">
+              <code className="sc-hp-code" style={{ whiteSpace: 'pre' }}>{`# Stop and remove containers, networks, volumes
+cd "$HOME\\catalyst"
+docker compose down -v --remove-orphans
+
+# Remove all Catalyst images
+docker images --format "{{.Repository}}:{{.Tag}}" | Select-String "catalyst" | ForEach-Object { docker rmi $_ }
+
+# Remove the install folder
+cd $HOME
+Remove-Item -Recurse -Force "$HOME\\catalyst"
+
+# Prune anything leftover
+docker system prune -f`}</code>
+            </div>
+          ) : (
+            <div className="sc-hp-code-block">
+              <code className="sc-hp-code" style={{ whiteSpace: 'pre' }}>{`# Stop and remove containers, networks, volumes
+cd ~/catalyst
+docker compose down -v --remove-orphans
+
+# Remove all Catalyst images
+docker images --format "{{.Repository}}:{{.Tag}}" | grep "catalyst" | xargs docker rmi 2>/dev/null || true
+
+# Remove the install folder
+rm -rf ~/catalyst
+
+# Prune anything leftover
+docker system prune -f`}</code>
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Footer */}
