@@ -37,7 +37,37 @@ echo "Pulling latest images..."
 docker compose pull
 
 echo ""
-echo "Starting Catalyst Studio (press Ctrl+C to stop)..."
-echo "Once services are running, open your browser at: http://localhost"
+echo "Starting Catalyst Studio..."
+docker compose up -d
+
+# Wait for Caddy to be ready
 echo ""
-docker compose up
+echo "Waiting for services to start (this may take a minute)..."
+MAX_WAIT=120
+ELAPSED=0
+until curl -sf http://localhost > /dev/null 2>&1; do
+  if [ $ELAPSED -ge $MAX_WAIT ]; then
+    echo ""
+    echo "Services are taking longer than expected."
+    echo "Check status with: docker compose ps"
+    echo "Then visit http://localhost when ready."
+    exit 0
+  fi
+  printf "."
+  sleep 3
+  ELAPSED=$((ELAPSED + 3))
+done
+
+echo ""
+echo ""
+echo "Catalyst Studio is ready! Opening http://localhost ..."
+echo "Streaming logs below — press Ctrl+C to stop following (the stack keeps running)."
+echo ""
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  open http://localhost
+else
+  xdg-open http://localhost 2>/dev/null || true
+fi
+
+docker compose logs -f
