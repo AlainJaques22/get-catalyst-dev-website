@@ -21,14 +21,15 @@ New-Item -ItemType Directory -Force -Path $installPath | Out-Null
 Set-Location $installPath
 
 # Download files
+# Note: use RawContentBytes + WriteAllBytes to prevent PowerShell 5 adding a UTF-8 BOM
 Write-Host "Downloading docker-compose.yml..."
-Invoke-WebRequest -Uri "$baseUrl/downloads/docker-compose.yml" -OutFile "docker-compose.yml"
+[System.IO.File]::WriteAllBytes("docker-compose.yml", (Invoke-WebRequest -Uri "$baseUrl/downloads/docker-compose.yml" -UseBasicParsing).RawContentBytes)
 
 Write-Host "Downloading catalyst.config.json..."
-Invoke-WebRequest -Uri "$baseUrl/downloads/catalyst.config.json" -OutFile "catalyst.config.json"
+[System.IO.File]::WriteAllBytes("catalyst.config.json", (Invoke-WebRequest -Uri "$baseUrl/downloads/catalyst.config.json" -UseBasicParsing).RawContentBytes)
 
 Write-Host "Downloading init-multi-db.sh..."
-Invoke-WebRequest -Uri "$baseUrl/downloads/init-multi-db.sh" -OutFile "init-multi-db.sh"
+[System.IO.File]::WriteAllBytes("init-multi-db.sh", (Invoke-WebRequest -Uri "$baseUrl/downloads/init-multi-db.sh" -UseBasicParsing).RawContentBytes)
 
 Write-Host ""
 Write-Host "Pulling latest images..."
