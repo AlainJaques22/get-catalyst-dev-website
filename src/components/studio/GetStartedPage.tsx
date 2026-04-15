@@ -94,6 +94,14 @@ function Step({ num, title, children }: { num: number; title: string; children: 
 function InstallStep({ terminalHint, command, scriptUrl }: { terminalHint: React.ReactNode; command: string; scriptUrl: string }) {
   return (
     <Step num={2} title="Install Catalyst Studio">
+      <div style={{ margin: '0 0 14px', display: 'flex', alignItems: 'baseline', gap: 10 }}>
+        <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: '#aaa', fontFamily: "'SF Mono', Consolas, 'Courier New', monospace" }}>
+          Version 0.1.0
+        </span>
+        <span style={{ fontSize: 11, color: '#555', fontFamily: "'SF Mono', Consolas, 'Courier New', monospace" }}>
+          15 Apr 2026, 07:27
+        </span>
+      </div>
       <p style={{ margin: '0 0 12px', fontSize: 13, color: '#888' }}>
         First install takes around 5–10 minutes depending on your internet speed — Docker needs to pull the images before starting.
       </p>
@@ -144,7 +152,6 @@ function InstallStep({ terminalHint, command, scriptUrl }: { terminalHint: React
                 <span className="sc-hp-download-btn-text">init-multi-db.sh</span>
               </a>
             </div>
-            <p style={{ margin: '0 0 12px', fontSize: 11, color: '#888' }}>Stack v0.1.0 — 13 Apr 2026</p>
             <ol start={3} style={{ margin: '0', paddingLeft: '1.2em', display: 'flex', flexDirection: 'column', gap: '8px' }}>
               <li>Open a terminal in the <code style={{ background: '#1a1a1a', padding: '2px 4px', borderRadius: '3px' }}>catalyst</code> folder and run:</li>
             </ol>
