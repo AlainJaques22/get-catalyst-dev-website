@@ -21,18 +21,19 @@ New-Item -ItemType Directory -Force -Path $installPath | Out-Null
 Set-Location $installPath
 
 # Download files
-# Use RawContentBytes + WriteAllBytes to prevent PowerShell 5 adding a UTF-8 BOM.
-# Browser User-Agent is required — Cloudflare blocks PowerShell's default agent.
-$headers = @{"User-Agent" = "Mozilla/5.0"}
-
 Write-Host "Downloading docker-compose.yml..."
-[System.IO.File]::WriteAllBytes("docker-compose.yml", (Invoke-WebRequest -Uri "$baseUrl/downloads/docker-compose.yml" -UseBasicParsing -Headers $headers).RawContentBytes)
+Invoke-WebRequest -Uri "$baseUrl/downloads/docker-compose.yml" -UseBasicParsing -OutFile "docker-compose.yml"
 
 Write-Host "Downloading catalyst.config.json..."
-[System.IO.File]::WriteAllBytes("catalyst.config.json", (Invoke-WebRequest -Uri "$baseUrl/downloads/catalyst.config.json" -UseBasicParsing -Headers $headers).RawContentBytes)
+Invoke-WebRequest -Uri "$baseUrl/downloads/catalyst.config.json" -UseBasicParsing -OutFile "catalyst.config.json"
+# PowerShell 5 adds a UTF-8 BOM to downloaded text files — strip it so JSON.parse doesn't choke
+$bytes = [System.IO.File]::ReadAllBytes("catalyst.config.json")
+if ($bytes.Length -ge 3 -and $bytes[0] -eq 239 -and $bytes[1] -eq 187 -and $bytes[2] -eq 191) {
+  [System.IO.File]::WriteAllBytes("catalyst.config.json", $bytes[3..($bytes.Length - 1)])
+}
 
 Write-Host "Downloading init-multi-db.sh..."
-[System.IO.File]::WriteAllBytes("init-multi-db.sh", (Invoke-WebRequest -Uri "$baseUrl/downloads/init-multi-db.sh" -UseBasicParsing -Headers $headers).RawContentBytes)
+Invoke-WebRequest -Uri "$baseUrl/downloads/init-multi-db.sh" -UseBasicParsing -OutFile "init-multi-db.sh"
 
 Write-Host ""
 Write-Host "Pulling latest images..."
