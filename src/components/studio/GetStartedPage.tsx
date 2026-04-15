@@ -99,7 +99,7 @@ function InstallStep({ terminalHint, command, scriptUrl }: { terminalHint: React
           Version 0.1.0
         </span>
         <span style={{ fontSize: 11, color: '#555', fontFamily: "'SF Mono', Consolas, 'Courier New', monospace" }}>
-          15 Apr 2026, 11:40
+          15 Apr 2026, 12:46
         </span>
       </div>
       <p style={{ margin: '0 0 12px', fontSize: 13, color: '#888' }}>
