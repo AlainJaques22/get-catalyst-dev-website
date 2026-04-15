@@ -1,4 +1,10 @@
 #!/bin/bash
+# Self-heal CRLF: if this file was downloaded on Windows it may have \r\n line endings.
+# Detect that, write a clean copy, and re-exec so bash runs the corrected version.
+if grep -ql $'\r' "$0" 2>/dev/null; then
+  tmp=$(mktemp)
+  sed 's/\r//' "$0" > "$tmp" && exec bash "$tmp" "$@"
+fi
 set -e
 
 # Idempotent PostgreSQL multi-database initialization script
