@@ -21,15 +21,18 @@ New-Item -ItemType Directory -Force -Path $installPath | Out-Null
 Set-Location $installPath
 
 # Download files
-# Note: use RawContentBytes + WriteAllBytes to prevent PowerShell 5 adding a UTF-8 BOM
+# Use RawContentBytes + WriteAllBytes to prevent PowerShell 5 adding a UTF-8 BOM.
+# Browser User-Agent is required — Cloudflare blocks PowerShell's default agent.
+$headers = @{"User-Agent" = "Mozilla/5.0"}
+
 Write-Host "Downloading docker-compose.yml..."
-[System.IO.File]::WriteAllBytes("docker-compose.yml", (Invoke-WebRequest -Uri "$baseUrl/downloads/docker-compose.yml" -UseBasicParsing).RawContentBytes)
+[System.IO.File]::WriteAllBytes("docker-compose.yml", (Invoke-WebRequest -Uri "$baseUrl/downloads/docker-compose.yml" -UseBasicParsing -Headers $headers).RawContentBytes)
 
 Write-Host "Downloading catalyst.config.json..."
-[System.IO.File]::WriteAllBytes("catalyst.config.json", (Invoke-WebRequest -Uri "$baseUrl/downloads/catalyst.config.json" -UseBasicParsing).RawContentBytes)
+[System.IO.File]::WriteAllBytes("catalyst.config.json", (Invoke-WebRequest -Uri "$baseUrl/downloads/catalyst.config.json" -UseBasicParsing -Headers $headers).RawContentBytes)
 
 Write-Host "Downloading init-multi-db.sh..."
-[System.IO.File]::WriteAllBytes("init-multi-db.sh", (Invoke-WebRequest -Uri "$baseUrl/downloads/init-multi-db.sh" -UseBasicParsing).RawContentBytes)
+[System.IO.File]::WriteAllBytes("init-multi-db.sh", (Invoke-WebRequest -Uri "$baseUrl/downloads/init-multi-db.sh" -UseBasicParsing -Headers $headers).RawContentBytes)
 
 Write-Host ""
 Write-Host "Pulling latest images..."
