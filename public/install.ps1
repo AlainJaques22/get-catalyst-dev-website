@@ -32,9 +32,6 @@ Invoke-WebRequest -Uri "$baseUrl/downloads/catalyst.config.json" -UseBasicParsin
 
 Write-Host "Downloading init-multi-db.sh..."
 Invoke-WebRequest -Uri "$baseUrl/downloads/init-multi-db.sh" -UseBasicParsing -Headers $headers -OutFile "init-multi-db.sh"
-# Shell scripts are line-ending sensitive — force LF regardless of what PowerShell wrote.
-$sh = [System.IO.File]::ReadAllText("init-multi-db.sh") -replace "`r`n", "`n" -replace "`r", "`n"
-[System.IO.File]::WriteAllText("init-multi-db.sh", $sh, (New-Object System.Text.UTF8Encoding $false))
 
 Write-Host ""
 Write-Host "Pulling latest images..."
