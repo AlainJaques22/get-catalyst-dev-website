@@ -21,6 +21,12 @@ fi
 mkdir -p "$INSTALL_DIR"
 cd "$INSTALL_DIR"
 
+# Clean up any existing stack (removes DB volumes for a fresh init, preserves user-files/)
+if [ -f "docker-compose.yml" ]; then
+  echo "Removing existing stack..."
+  docker compose down -v 2>/dev/null || true
+fi
+
 # Download files
 echo "Downloading docker-compose.yml..."
 curl -fsSL "$BASE_URL/downloads/docker-compose.yml" -o docker-compose.yml
