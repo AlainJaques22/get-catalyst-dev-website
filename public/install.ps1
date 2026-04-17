@@ -20,6 +20,12 @@ if (-not (Get-Command docker -ErrorAction SilentlyContinue)) {
 New-Item -ItemType Directory -Force -Path $installPath | Out-Null
 Set-Location $installPath
 
+# Clean up any existing stack (removes DB volumes for a fresh init, preserves user-files/)
+if (Test-Path "docker-compose.yml") {
+  Write-Host "Removing existing stack..."
+  docker compose down -v 2>$null
+}
+
 # Download files
 # Cloudflare blocks PowerShell's default user agent — set a browser UA for all requests.
 $headers = @{"User-Agent" = "Mozilla/5.0"}

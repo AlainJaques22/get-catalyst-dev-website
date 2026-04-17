@@ -120,6 +120,8 @@ services:
       - CONNECTORS_DIR=/app/connectors
       - CAMUNDA_API_URL=http://engine:8080/engine-rest
       - TZ=${TZ:-UTC}
+    volumes:
+      - ./user-files:/app/bpmn-files
     networks:
       - catalyst-network
     restart: unless-stopped
