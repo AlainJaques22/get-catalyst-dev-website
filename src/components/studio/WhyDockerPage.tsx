@@ -226,7 +226,7 @@ export function WhyDockerPage({ onNavigate }: WhyDockerPageProps) {
               <CatalystLogo size={20} />
               <span className="sc-hp-footer-name">Catalyst</span>
             </div>
-            <p className="sc-hp-footer-tagline">Built for the Camunda 7 community</p>
+            <p className="sc-hp-footer-tagline">Built with ❤️ for the Camunda community</p>
           </div>
           <div className="sc-hp-footer-links">
             <a href="mailto:hello@get-catalyst.dev" className="sc-hp-footer-link">

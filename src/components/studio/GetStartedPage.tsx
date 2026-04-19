@@ -118,7 +118,7 @@ function InstallStep({ terminalHint, command, scriptUrl }: { terminalHint: React
               <code className="sc-hp-code">{command}</code>
             </div>
             <p style={{ margin: '8px 0 0', fontSize: 12, color: '#666' }}>
-              Creates a <code style={{ background: '#1a1a1a', padding: '2px 4px', borderRadius: '3px' }}>catalyst</code> folder, downloads all required files, starts the stack, and opens your browser automatically.
+              Creates a <code className="sc-gs-inline-code">catalyst</code> folder, downloads all required files, starts the stack, and opens your browser automatically.
             </p>
             <p style={{ margin: '6px 0 0', fontSize: 12, color: '#666' }}>
               Not sure what this does?{' '}
@@ -135,7 +135,7 @@ function InstallStep({ terminalHint, command, scriptUrl }: { terminalHint: React
           </div>
           <div className="sc-gs-install-option-body">
             <ol style={{ margin: '0 0 12px', paddingLeft: '1.2em', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              <li>Create a folder called <code style={{ background: '#1a1a1a', padding: '2px 4px', borderRadius: '3px' }}>catalyst</code> anywhere convenient.</li>
+              <li>Create a folder called <code className="sc-gs-inline-code">catalyst</code> anywhere convenient.</li>
               <li>Download all three files below into that folder:</li>
             </ol>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '4px' }}>
@@ -153,13 +153,13 @@ function InstallStep({ terminalHint, command, scriptUrl }: { terminalHint: React
               </a>
             </div>
             <ol start={3} style={{ margin: '0', paddingLeft: '1.2em', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              <li>Open a terminal in the <code style={{ background: '#1a1a1a', padding: '2px 4px', borderRadius: '3px' }}>catalyst</code> folder and run:</li>
+              <li>Open a terminal in the <code className="sc-gs-inline-code">catalyst</code> folder and run:</li>
             </ol>
             <div className="sc-hp-code-block" style={{ margin: '8px 0' }}>
               <code className="sc-hp-code">docker compose up -d</code>
             </div>
             <ol start={4} style={{ margin: '0', paddingLeft: '1.2em', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              <li>Wait a minute for services to start, then open your browser and go to <code style={{ background: '#1a1a1a', padding: '2px 4px', borderRadius: '3px' }}>http://localhost</code>.</li>
+              <li>Wait a minute for services to start, then open your browser and go to <code className="sc-gs-inline-code">http://localhost</code>.</li>
             </ol>
           </div>
         </div>
@@ -217,7 +217,7 @@ function MacSteps({ onNavigate }: { onNavigate: (id: string, label: string) => v
     <>
       <ContainerRuntimeStep onNavigate={onNavigate} />
       <InstallStep
-        terminalHint={<>Open Terminal (<code style={{ background: '#1a1a1a', padding: '2px 4px', borderRadius: '3px' }}>Cmd+Space</code>, type "Terminal", Enter) and paste:</>}
+        terminalHint={<>Open Terminal (<code className="sc-gs-inline-code">Cmd+Space</code>, type "Terminal", Enter) and paste:</>}
         command="curl -fsSL https://get-catalyst.dev/install.sh | bash"
         scriptUrl="/install.sh"
       />
@@ -255,7 +255,7 @@ function LinuxSteps({ onNavigate }: { onNavigate: (id: string, label: string) =>
         </p>
       </Step>
       <InstallStep
-        terminalHint={<>Open Terminal (<code style={{ background: '#1a1a1a', padding: '2px 4px', borderRadius: '3px' }}>Ctrl+Alt+T</code> on Ubuntu/Debian, or search your app launcher for "Terminal") and paste:</>}
+        terminalHint={<>Open Terminal (<code className="sc-gs-inline-code">Ctrl+Alt+T</code> on Ubuntu/Debian, or search your app launcher for "Terminal") and paste:</>}
         command="curl -fsSL https://get-catalyst.dev/install.sh | bash"
         scriptUrl="/install.sh"
       />
@@ -362,7 +362,7 @@ docker system prune -f`}</code>
               <CatalystLogo size={20} />
               <span className="sc-hp-footer-name">Catalyst</span>
             </div>
-            <p className="sc-hp-footer-tagline">Built for the Camunda 7 community</p>
+            <p className="sc-hp-footer-tagline">Built with ❤️ for the Camunda community</p>
           </div>
           <div className="sc-hp-footer-links">
             <a href="mailto:hello@get-catalyst.dev" className="sc-hp-footer-link">

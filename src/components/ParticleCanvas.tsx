@@ -41,7 +41,7 @@ const CFG = {
   gridStep: 64,
   minDist: 80,
   maxDist: 360,
-  speedMult: 0.5,
+  speedMult: 1.2,
 };
 
 const TYPEBAG: BpmnNode['type'][] = [
@@ -49,9 +49,9 @@ const TYPEBAG: BpmnNode['type'][] = [
   'gateway', 'task', 'task', 'task', 'end',
 ];
 
-// ── Hardcoded colors (fixed dark theme, no CSS variable reading) ──
+// ── Theme-aware colors ──
 
-const COLORS: Colors = {
+const DARK_COLORS: Colors = {
   nodeFill: 'rgba(255,255,255,0.04)',
   nodeStroke: 'rgba(255,255,255,0.14)',
   flow: 'rgba(255,255,255,0.07)',
@@ -60,6 +60,22 @@ const COLORS: Colors = {
   tokenGlow: 'rgba(34,211,238,0.15)',
   grid: 'rgba(255,255,255,0.014)',
 };
+
+const LIGHT_COLORS: Colors = {
+  nodeFill: 'rgba(0,0,0,0.06)',
+  nodeStroke: 'rgba(0,0,0,0.28)',
+  flow: 'rgba(0,0,0,0.18)',
+  arrow: 'rgba(0,0,0,0.22)',
+  token: 'rgba(6,148,162,0.9)',
+  tokenGlow: 'rgba(6,148,162,0.18)',
+  grid: 'rgba(0,0,0,0.07)',
+};
+
+function getColors(): Colors {
+  return document.documentElement.getAttribute('data-theme') === 'light'
+    ? LIGHT_COLORS
+    : DARK_COLORS;
+}
 
 // ── Node geometry — boundary point toward a target (scaled up) ──
 
@@ -375,7 +391,10 @@ export default function ParticleCanvas() {
     let lastTs = 0;
 
     const mouse = { x: -9999, y: -9999, radius: 150, strength: 2.8 };
-    const col = COLORS;
+    let col = getColors();
+
+    const themeObserver = new MutationObserver(() => { col = getColors(); });
+    themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
     let nodes: BpmnNode[] = [];
     let edges: BpmnEdge[] = [];
@@ -446,8 +465,8 @@ export default function ParticleCanvas() {
             type: TYPEBAG[Math.floor(Math.random() * TYPEBAG.length)],
             x: cw * c + cw * (0.15 + Math.random() * 0.7),
             y: ch * r + ch * (0.15 + Math.random() * 0.7),
-            vx: (Math.random() - 0.5) * 0.055,
-            vy: (Math.random() - 0.5) * 0.055,
+            vx: (Math.random() - 0.5) * 0.28,
+            vy: (Math.random() - 0.5) * 0.28,
           });
           idx = nodes.length;
         }
@@ -506,10 +525,10 @@ export default function ParticleCanvas() {
         if (n.y < 40) n.vy += 0.01;
         if (n.y > H - 60) n.vy -= 0.01;
 
-        n.vx *= 0.992;
-        n.vy *= 0.992;
-        n.vx += (Math.random() - 0.5) * 0.0018;
-        n.vy += (Math.random() - 0.5) * 0.0018;
+        n.vx *= 0.998;
+        n.vy *= 0.998;
+        n.vx += (Math.random() - 0.5) * 0.012;
+        n.vy += (Math.random() - 0.5) * 0.012;
       });
 
       updateEdgePts();
@@ -580,6 +599,7 @@ export default function ParticleCanvas() {
       window.removeEventListener('mousemove', onMouseMove);
       window.removeEventListener('mouseleave', onMouseLeave);
       ro.disconnect();
+      themeObserver.disconnect();
     };
   }, []);
 
