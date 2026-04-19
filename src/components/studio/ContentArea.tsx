@@ -6,6 +6,7 @@ import { ConnectorsGrid } from './ConnectorsGrid';
 import { ConnectorDetail } from './ConnectorDetail';
 import { PlaceholderPage } from './PlaceholderPage';
 import { WhyDockerPage } from './WhyDockerPage';
+import { PricingPage } from './PricingPage';
 
 interface ContentAreaProps {
   state: ShowcaseState;
@@ -110,6 +111,9 @@ export function ContentArea({ state, dispatch }: ContentAreaProps) {
     }
     if (activeView === 'get-started') {
       return <GetStartedPage onNavigate={navigate} />;
+    }
+    if (activeView === 'pricing') {
+      return <PricingPage onNavigate={navigate} />;
     }
     if (activeView === 'why-docker') {
       return <WhyDockerPage onNavigate={navigate} />;
