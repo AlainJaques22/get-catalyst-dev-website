@@ -235,9 +235,6 @@ export function LeftMenu({ state, dispatch }: LeftMenuProps) {
             <span className="sc-menu-icon"><PricingIcon /></span>
           </div>
         </div>
-        <div className="sc-menu-settings sc-collapsed-item" title="Settings">
-          <span className="sc-menu-icon"><SettingsIcon /></span>
-        </div>
       </div>
     );
   }
@@ -375,10 +372,6 @@ export function LeftMenu({ state, dispatch }: LeftMenuProps) {
 
       </div>
 
-      <div className="sc-menu-settings">
-        <span className="sc-menu-icon"><SettingsIcon /></span>
-        <span className="sc-menu-label">Settings</span>
-      </div>
     </div>
   );
 }
