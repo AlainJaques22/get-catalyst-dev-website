@@ -1,5 +1,126 @@
+import { useState, useEffect } from 'react';
 import { CatalystLogo } from './CatalystLogo';
 import ParticleCanvas from '../ParticleCanvas';
+
+type OS = 'win' | 'mac' | 'linux';
+
+const installCommands: Record<OS, string> = {
+  win: 'irm https://get-catalyst.dev/install.ps1 | iex',
+  mac: 'curl -fsSL https://get-catalyst.dev/install.sh | bash',
+  linux: 'curl -fsSL https://get-catalyst.dev/install.sh | bash',
+};
+
+const installScriptUrls: Record<OS, string> = {
+  win: 'https://get-catalyst.dev/install.ps1',
+  mac: 'https://get-catalyst.dev/install.sh',
+  linux: 'https://get-catalyst.dev/install.sh',
+};
+
+function InstallTerminal({ onNavigate }: { onNavigate: (id: string, label: string) => void }) {
+  const [os, setOs] = useState<OS>('win');
+  const [copied, setCopied] = useState(false);
+
+  function handleCopy() {
+    navigator.clipboard.writeText(installCommands[os]);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500);
+  }
+
+  return (
+    <div className="sc-hp-terminal">
+      <div className="sc-hp-terminal-bar">
+        <div className="sc-hp-terminal-dots">
+          <span /><span /><span />
+        </div>
+        <div className="sc-hp-os-tabs">
+          {(['win', 'mac', 'linux'] as OS[]).map(o => (
+            <button
+              key={o}
+              type="button"
+              className={`sc-hp-os-tab${os === o ? ' active' : ''}`}
+              onClick={() => setOs(o)}
+            >
+              {o === 'win' ? 'Windows' : o === 'mac' ? 'macOS' : 'Linux'}
+            </button>
+          ))}
+        </div>
+      </div>
+      <div className="sc-hp-terminal-cmd">
+        <code>
+          <span className="sc-hp-terminal-prompt">{os === 'win' ? 'PS> ' : '$ '}</span>
+          {installCommands[os]}
+        </code>
+        <button type="button" className="sc-hp-terminal-copy" onClick={handleCopy}>
+          {copied ? 'copied!' : 'copy'}
+        </button>
+      </div>
+      <p className="sc-hp-terminal-prereq">
+        Requires <strong>Docker Desktop</strong> or <strong>Rancher Desktop</strong> installed first
+      </p>
+      <div className="sc-hp-terminal-meta">
+        <button type="button" className="sc-hp-terminal-link" onClick={() => onNavigate('get-started', 'Get Started')}>
+          Full install guide
+        </button>
+        <span className="sc-hp-terminal-sep">·</span>
+        <a href={installScriptUrls[os]} target="_blank" rel="noreferrer" className="sc-hp-terminal-link">
+          What does this script do?
+        </a>
+      </div>
+    </div>
+  );
+}
+
+const previews = [
+  { id: 'anthropic-claude', label: 'Anthropic Claude', icon: '/connectors/anthropic-claude.svg' },
+];
+
+function PreviewGallery() {
+  const [lightbox, setLightbox] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!lightbox) return;
+    const handleKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setLightbox(null); };
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, [lightbox]);
+
+  return (
+    <section className="sc-hp-section">
+      <div className="sc-hp-narrow">
+        <div className="sc-hp-previews">
+          {previews.map(({ id, label, icon }) => (
+            <div key={id} className="sc-hp-preview-card" onClick={() => setLightbox(id)}>
+              <div className="sc-hp-preview-screen">
+                <div className="sc-hp-preview-chrome">
+                  <span className="sc-hp-preview-dot" />
+                  <span className="sc-hp-preview-dot" />
+                  <span className="sc-hp-preview-dot" />
+                  <span className="sc-hp-preview-urlbar" />
+                </div>
+                <div className="sc-hp-preview-thumb">
+                  <img src={`/connectors/screenshots/${id}.png`} alt={label} />
+                </div>
+              </div>
+              <div className="sc-hp-preview-footer">
+                <img src={icon} alt="" className="sc-hp-preview-icon" />
+                <span className="sc-hp-preview-label">{label}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      {lightbox && (
+        <div className="sc-lightbox-overlay" onClick={() => setLightbox(null)}>
+          <img
+            src={`/connectors/screenshots/${lightbox}.png`}
+            alt={previews.find(p => p.id === lightbox)?.label}
+            className="sc-lightbox-image"
+          />
+        </div>
+      )}
+    </section>
+  );
+}
 
 interface HomePageProps {
   onNavigate: (id: string, label: string) => void;
@@ -103,64 +224,93 @@ export function HomePage({ onNavigate }: HomePageProps) {
 
   return (
     <div className="sc-home-page">
-      <div className="sc-hp-ribbon">Early Access</div>
-
-      {/* ── Hero ── */}
-      <section className="sc-hp-hero">
+      {/* ── Hero + Preview (shared particle background) ── */}
+      <div className="sc-hp-hero-zone">
         <div className="sc-hp-particles">
           <ParticleCanvas />
         </div>
-        <div className="sc-hp-hero-lockup">
-          <CatalystLogo size={160} />
-          <span className="sc-hp-hero-lockup-text">
-            <span className="sc-hp-hero-lockup-bold">Catalyst</span>{' '}
-            <span className="sc-hp-hero-lockup-light">Studio</span>
-          </span>
-        </div>
 
-        <h1 className="sc-hp-hero-title">
-          Happy on Camunda 7? So are we.
-        </h1>
+        <section className="sc-hp-hero">
+          <div className="sc-hp-hero-lockup">
+            <CatalystLogo size={160} />
+            <span className="sc-hp-hero-lockup-text">
+              <span className="sc-hp-hero-lockup-bold">Catalyst</span>{' '}
+              <span className="sc-hp-hero-lockup-light">Studio</span>
+            </span>
+          </div>
 
-        <p className="sc-hp-hero-tagline">
-          Especially now that we've got everything a Camunda developer reaches for right here in Catalyst Studio.
-        </p>
+          <div className="sc-hp-eyebrow">Camunda 7 · Local development</div>
 
-        <p className="sc-hp-hero-subtitle">
-          Installation is simple. Catalyst Studio opens in your browser where you'll find everything you need, the full stack. No more app installing, no more app-hopping between engine, modeler and cockpit.
-        </p>
+          <h1 className="sc-hp-hero-title">
+            The multi-engine, <em>AI</em><br />
+            connected workspace<br />
+            Camunda devs<br />
+            <em>actually wanted.</em>
+          </h1>
 
-        <div className="sc-hp-hero-cta">
-          <button
-            type="button"
-            className="sc-hp-btn-primary"
-            onClick={() => onNavigate('get-started', 'Get Started')}
-          >
-            Get Started
-          </button>
-        </div>
-      </section>
+          <p className="sc-hp-hero-tagline">
+            Engine, modeler, cockpit, logs and AI connectors —
+            all in your browser. One Docker command and you're running.
+          </p>
+        </section>
 
-      {/* ── Solution ── */}
+        {/* ── Connector previews ── */}
+        <PreviewGallery />
+      </div>
+
+      {/* ── Engine support ── */}
       <section className="sc-hp-section">
         <div className="sc-hp-narrow">
-          <h2 className="sc-hp-section-title">The workspace we always wanted.</h2>
+          <h2 className="sc-hp-section-title">Engines supported</h2>
           <p className="sc-hp-solution-text">
-            One docker command installs everything. Engine running, Web Modeler open,
-            Cockpit, Tasklist, live logs, database browser — all connected,
-            all in your browser.
+            <strong>One-click switch between engines.</strong> Change your engine without changing your workflow — Catalyst Studio is engine-agnostic by design.
           </p>
-          <p className="sc-hp-solution-text">
-            And it keeps growing. API docs, FEEL playground, reference guides
-            — more landing every release.
-          </p>
+          <div className="sc-hp-engine-grid">
+            <div className="sc-hp-engine-card live">
+              <div className="sc-hp-engine-header">
+                <img src="/engines/camunda-7.svg" alt="Camunda 7" className="sc-hp-engine-logo" />
+                <span className="sc-hp-engine-status">live</span>
+              </div>
+              <div className="sc-hp-engine-name">Camunda 7</div>
+              <div className="sc-hp-engine-note">Community Edition</div>
+            </div>
+            <div className="sc-hp-engine-card live">
+              <div className="sc-hp-engine-header">
+                <img src="/engines/operaton.svg" alt="Operaton" className="sc-hp-engine-logo" />
+                <span className="sc-hp-engine-status">live</span>
+              </div>
+              <div className="sc-hp-engine-name">Operaton</div>
+              <div className="sc-hp-engine-note">Open source fork</div>
+            </div>
+            <div className="sc-hp-engine-card soon">
+              <div className="sc-hp-engine-header">
+                <span className="sc-hp-engine-status">coming</span>
+              </div>
+              <div className="sc-hp-engine-name">CIB seven</div>
+              <div className="sc-hp-engine-note">Commercial fork</div>
+            </div>
+            <div className="sc-hp-engine-card soon">
+              <div className="sc-hp-engine-header">
+                <span className="sc-hp-engine-status">coming</span>
+              </div>
+              <div className="sc-hp-engine-name">eximee BPMN</div>
+              <div className="sc-hp-engine-note">Camunda 7 fork</div>
+            </div>
+            <div className="sc-hp-engine-card soon">
+              <div className="sc-hp-engine-header">
+                <span className="sc-hp-engine-status">maybe one day</span>
+              </div>
+              <div className="sc-hp-engine-name">Camunda 8</div>
+              <div className="sc-hp-engine-note">Zeebe-based</div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* ── Features ── */}
       <section className="sc-hp-section">
         <div className="sc-hp-narrow">
-          <h2 className="sc-hp-section-title">What's inside</h2>
+          <h2 className="sc-hp-section-title">What's inside Studio</h2>
           <div className="sc-hp-features-grid">
             {features.map(f => (
               <div key={f.title} className="sc-hp-feature-card">
@@ -176,7 +326,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
       {/* ── Connectors ── */}
       <section className="sc-hp-section">
         <div className="sc-hp-narrow">
-          <h2 className="sc-hp-section-title">Oh! did we mention it ships with connectors?</h2>
+          <h2 className="sc-hp-section-title">Connectors included</h2>
           <p className="sc-hp-solution-text">
             All our pre-configured connector templates are available in your BPMN Service Task properties within Catalyst Studio, you just add your API secret key, deploy and it works. Comprehensive Readme docs are provided.
           </p>
@@ -185,7 +335,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
           </p>
           <div className="sc-hp-connector-grid">
             {showcaseConnectors.map(c => (
-              <div key={c.id} className="sc-hp-connector-chip">
+              <div key={c.id} className="sc-hp-connector-chip" style={{ cursor: 'pointer' }} onClick={() => onNavigate(`connector:${c.id}`, c.label)}>
                 <img src={`/connectors/${c.id}.svg`} width={20} height={20} alt="" />
                 <span>{c.label}</span>
               </div>
@@ -194,13 +344,44 @@ export function HomePage({ onNavigate }: HomePageProps) {
               More coming
             </div>
           </div>
-          <p className="sc-hp-connector-highlight">
-            Free to use in development. For early access Production use we want it to cost the equivalent of a pizza a month.
-          </p>
-          <p className="sc-hp-connector-note">
+<p className="sc-hp-connector-note">
             Catalyst Connector works independently of Catalyst Studio. Drop the JAR
             into any existing Camunda 7 environment and the Connectors just work.
           </p>
+        </div>
+      </section>
+
+      {/* ── What you get ── */}
+      <section className="sc-hp-section">
+        <div className="sc-hp-narrow">
+          <div className="sc-hp-wyg-eyebrow">What you get</div>
+          <h2 className="sc-hp-wyg-h2">Full functionality.<br /><em>From the first command.</em></h2>
+          <div className="sc-hp-wyg-grid">
+            <div className="sc-hp-wyg-cell">
+              <div className="sc-hp-wyg-label">Engines</div>
+              <p><strong>Camunda 7, Operaton</strong>, and more on the way. Switch engines without changing your workflow.</p>
+            </div>
+            <div className="sc-hp-wyg-cell">
+              <div className="sc-hp-wyg-label">Connectors</div>
+              <p><strong>17 AI and integration connectors</strong> pre-loaded. Configured as element templates, ready to drop in.</p>
+            </div>
+            <div className="sc-hp-wyg-cell">
+              <div className="sc-hp-wyg-label">Tooling</div>
+              <p><strong>Web modeler, cockpit, tasklist, live logs</strong> and a database browser. All in your browser.</p>
+            </div>
+            <div className="sc-hp-wyg-cell">
+              <div className="sc-hp-wyg-label">No account</div>
+              <p>No email address. No "verify your inbox." No onboarding sequence. No drip campaign. <strong>We don't even know you installed it.</strong></p>
+            </div>
+            <div className="sc-hp-wyg-cell">
+              <div className="sc-hp-wyg-label">No trial</div>
+              <p>No trial period. No feature gates. No nudges to upgrade. <strong>No crippleware. No nagware. No tricks. No catch.</strong></p>
+            </div>
+            <div className="sc-hp-wyg-cell">
+              <div className="sc-hp-wyg-label">No salesperson</div>
+              <p>No salesperson will follow up. <strong>Just run one command and you're in.</strong> Full functionality from day one.</p>
+            </div>
+          </div>
         </div>
       </section>
 

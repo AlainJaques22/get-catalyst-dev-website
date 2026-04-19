@@ -127,6 +127,14 @@ function ChevronLeftIcon() {
   );
 }
 
+function PricingIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+    </svg>
+  );
+}
+
 function SettingsIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -218,6 +226,13 @@ export function LeftMenu({ state, dispatch }: LeftMenuProps) {
             title="Log Viewer"
           >
             <span className="sc-menu-icon"><TerminalIcon /></span>
+          </div>
+          <div
+            className={`sc-menu-item sc-collapsed-item ${activeView === 'pricing' ? 'active' : ''}`}
+            onClick={() => navigate('pricing', 'Pricing')}
+            title="Pricing"
+          >
+            <span className="sc-menu-icon"><PricingIcon /></span>
           </div>
         </div>
         <div className="sc-menu-settings sc-collapsed-item" title="Settings">
@@ -313,6 +328,15 @@ export function LeftMenu({ state, dispatch }: LeftMenuProps) {
           </div>
         )}
 
+        {/* Pricing */}
+        <div
+          className={`sc-menu-item ${activeView === 'pricing' ? 'active' : ''}`}
+          onClick={() => navigate('pricing', 'Pricing')}
+        >
+          <span className="sc-menu-icon"><PricingIcon /></span>
+          <span className="sc-menu-label">Pricing</span>
+        </div>
+
         {/* Web Modeler */}
         <div
           className={`sc-menu-item ${activeView === 'modeler' ? 'active' : ''}`}
@@ -348,6 +372,7 @@ export function LeftMenu({ state, dispatch }: LeftMenuProps) {
           <span className="sc-menu-icon"><TerminalIcon /></span>
           <span className="sc-menu-label">Log Viewer</span>
         </div>
+
       </div>
 
       <div className="sc-menu-settings">

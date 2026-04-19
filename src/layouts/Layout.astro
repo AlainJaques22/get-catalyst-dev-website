@@ -13,8 +13,12 @@ const {
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
+    <script is:inline>
+      const _t = localStorage.getItem('catalyst-theme');
+      if (_t) document.documentElement.setAttribute('data-theme', _t);
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
