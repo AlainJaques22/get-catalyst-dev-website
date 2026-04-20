@@ -23,7 +23,9 @@ cd "$INSTALL_DIR"
 
 # Clean up any existing stack (removes DB volumes for a fresh init, preserves user-files/)
 if [ -f "docker-compose.yml" ]; then
-  echo "Removing existing stack..."
+  echo "Stopping existing stack..."
+  docker compose stop --timeout 30 2>/dev/null || true
+  echo "Removing containers and volumes..."
   docker compose down -v 2>/dev/null || true
 fi
 
