@@ -1454,37 +1454,60 @@ body {
 
 .sc-gs-tabs {
   display: flex;
-  gap: 0;
+  gap: 4px;
   margin-bottom: 32px;
-  border-bottom: 1px solid var(--border);
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 4px;
 }
 
 .sc-gs-tab {
+  flex: 1;
   padding: 10px 20px;
-  background: none;
-  border: none;
-  border-bottom: 2px solid transparent;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 7px;
   color: var(--text-muted);
   font: inherit;
   font-size: 14px;
+  font-weight: 500;
   cursor: pointer;
   transition: all 0.15s;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
 }
 
 .sc-gs-tab:hover {
   color: var(--text);
+  background: rgba(128, 128, 128, 0.1);
 }
 
 .sc-gs-tab.active {
+  background: var(--primary-bg);
+  border-color: var(--primary-border);
   color: var(--text);
-  border-bottom-color: var(--primary);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
 }
 
 .sc-gs-tab-icon {
+  color: var(--text-muted);
+}
+
+.sc-gs-tab.active .sc-gs-tab-icon {
   color: var(--primary);
+}
+
+.sc-gs-platform-heading {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--primary);
+  margin: 0 0 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--primary-border);
+  letter-spacing: 0.01em;
 }
 
 .sc-gs-step {
