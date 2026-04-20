@@ -42,12 +42,8 @@ Write-Host "Downloading init-multi-db.sh..."
 Invoke-WebRequest -Uri "$baseUrl/downloads/init-multi-db.sh" -UseBasicParsing -Headers $headers -OutFile "init-multi-db.sh"
 
 Write-Host ""
-Write-Host "Pulling latest images..."
-docker compose pull
-
-Write-Host ""
-Write-Host "Starting Catalyst Studio..."
-docker compose up -d
+Write-Host "Pulling images and starting Catalyst Studio..."
+docker compose up -d --pull always
 
 # Wait for Caddy to be ready
 Write-Host ""
