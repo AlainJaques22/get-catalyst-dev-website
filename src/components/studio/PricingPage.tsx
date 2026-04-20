@@ -40,7 +40,7 @@ export function PricingPage({ onNavigate }: PricingPageProps) {
 
         <div className="sc-pricing-smallprint-box">
           <div className="sc-pricing-smallprint-heading">The smallprint</div>
-          <p className="sc-pricing-smallprint">You're right to be sceptical. Nobody goes to all this effort to give it away for free. Confession time. We have an ulterior motive. We think once you've built with the connectors, integrated with AI and all the other good stuff, you won't want to live without them in production — and that's when we'd like to be paid. Not much. Significantly less than whoever is currently quoting you six figures to modernise your stack. Just enough for us to keep the lights on and keep shipping. That's genuinely it.</p>
+          <p className="sc-pricing-smallprint">You're right to be sceptical. Nobody goes to all this effort to give it away for free. Confession time. We have an ulterior motive. We think once you've built with the connectors, integrated with AI and all the other good stuff, you won't want to live without them in production — and that's when we'd like to be paid. Not much. Significantly less than whoever is currently quoting you six figures to modernise your stack. Just enough for us to keep the lights on and keep shipping new features. That's genuinely it. If you just want to contribute something but don't want to use connectors in production yet, then buy some anyway, they never expire and it will be appreciated.</p>
         </div>
       </section>
 

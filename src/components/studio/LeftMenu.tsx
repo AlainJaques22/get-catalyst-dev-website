@@ -387,6 +387,15 @@ export function LeftMenu({ state, dispatch }: LeftMenuProps) {
           <span className="sc-menu-label">Pricing</span>
         </div>
 
+        {/* 404 Test — remove before ship */}
+        <div
+          className={`sc-menu-item ${activeView === 'view:404-test' ? 'active' : ''}`}
+          onClick={() => navigate('view:404-test', '404 Test')}
+        >
+          <span className="sc-menu-icon"><SettingsIcon /></span>
+          <span className="sc-menu-label">404 Test</span>
+        </div>
+
         {/* Web Modeler */}
         <div
           className={`sc-menu-item ${activeView === 'modeler' ? 'active' : ''}`}

@@ -132,7 +132,57 @@ export function ContentArea({ state, dispatch }: ContentAreaProps) {
     if (placeholder) {
       return <PlaceholderPage title={placeholder.title} icon={placeholder.icon} description={placeholder.description} credentials={placeholder.credentials} />;
     }
-    return <HomePage onNavigate={navigate} />;
+    return (
+      <div style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100%',
+        gap: 20,
+        textAlign: 'center',
+        padding: '0 24px',
+      }}>
+        {/* BPMN Error End Event */}
+        <svg width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="var(--error)" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="12" r="9" strokeWidth="2.5" />
+          <path d="M13 5.5 L8.5 13 L12 13 L11 18.5 L15.5 11 L12 11 Z" strokeWidth="1.2" fill="var(--error)" fillOpacity="0.25" />
+        </svg>
+        <div>
+          <p style={{ margin: '0 0 4px', fontSize: 11, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--error)', opacity: 0.8 }}>
+            Error End Event — 404
+          </p>
+          <p style={{ margin: '0 0 10px', fontSize: 20, fontWeight: 700, color: 'var(--text)' }}>
+            Page not found
+          </p>
+          <p style={{ margin: '0 0 6px', fontSize: 13, color: 'var(--text-muted)', maxWidth: 360 }}>
+            The process token followed a sequence flow to <code style={{ fontFamily: 'var(--mono)', fontSize: 12, color: 'var(--primary)', background: 'var(--primary-bg)', padding: '1px 5px', borderRadius: 4 }}>{activeView}</code> and terminated unexpectedly.
+          </p>
+          <p style={{ margin: '0 0 24px', fontSize: 12, color: 'var(--text-dim)' }}>
+            This view doesn't exist.
+          </p>
+        </div>
+        <button
+          onClick={() => navigate('home', 'Home')}
+          style={{
+            font: 'inherit',
+            fontSize: 13,
+            fontWeight: 500,
+            color: 'var(--primary)',
+            background: 'var(--primary-bg)',
+            border: '1px solid var(--primary-border)',
+            borderRadius: 6,
+            padding: '7px 16px',
+            cursor: 'pointer',
+            transition: 'opacity 0.15s',
+          }}
+          onMouseOver={e => (e.currentTarget.style.opacity = '0.8')}
+          onMouseOut={e => (e.currentTarget.style.opacity = '1')}
+        >
+          Route to Start Event
+        </button>
+      </div>
+    );
   };
 
   return (
