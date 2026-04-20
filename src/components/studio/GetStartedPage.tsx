@@ -1,6 +1,21 @@
 import { useState } from 'react';
 import { CatalystLogo } from './CatalystLogo';
 
+function CopyButton({ text }: { text: string }) {
+  const [copied, setCopied] = useState(false);
+  const copy = () => {
+    navigator.clipboard.writeText(text).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    });
+  };
+  return (
+    <button type="button" className="sc-gs-copy-btn" onClick={copy}>
+      {copied ? 'copied!' : 'copy'}
+    </button>
+  );
+}
+
 interface GetStartedPageProps {
   onNavigate: (id: string, label: string) => void;
 }
@@ -116,6 +131,7 @@ function InstallStep({ terminalHint, command, scriptUrl }: { terminalHint: React
             <p style={{ margin: '0 0 8px' }}>{terminalHint}</p>
             <div className="sc-hp-code-block">
               <code className="sc-hp-code">{command}</code>
+              <CopyButton text={command} />
             </div>
             <p style={{ margin: '8px 0 0', fontSize: 12, color: '#666' }}>
               Creates a <code className="sc-gs-inline-code">catalyst</code> folder, downloads all required files, starts the stack, and opens your browser automatically.
@@ -157,6 +173,7 @@ function InstallStep({ terminalHint, command, scriptUrl }: { terminalHint: React
             </ol>
             <div className="sc-hp-code-block" style={{ margin: '8px 0' }}>
               <code className="sc-hp-code">docker compose up -d</code>
+              <CopyButton text="docker compose up -d" />
             </div>
             <ol start={4} style={{ margin: '0', paddingLeft: '1.2em', display: 'flex', flexDirection: 'column', gap: '8px' }}>
               <li>Wait a minute for services to start, then open your browser and go to <code className="sc-gs-inline-code">http://localhost</code>.</li>
@@ -186,11 +203,12 @@ function ContainerRuntimeStep({ onNavigate }: { onNavigate: (id: string, label: 
         </a>{' '}
         (licence required for commercial use)
       </p>
-      <p style={{ margin: 0, fontSize: 12, color: '#666' }}>
+      <p style={{ margin: 0, fontSize: 12, color: 'var(--text-muted)' }}>
         Not sure what Docker or Rancher Desktop are?{' '}
         <button
           onClick={() => onNavigate('why-docker', 'Why Docker?')}
-          style={{ background: 'none', border: 'none', padding: 0, color: '#4a9eff', cursor: 'pointer', fontSize: 12, textDecoration: 'underline' }}
+          className="sc-hp-link"
+          style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', fontSize: 12 }}
         >
           Learn what they are and why Catalyst uses them
         </button>
@@ -237,6 +255,7 @@ function LinuxSteps({ onNavigate }: { onNavigate: (id: string, label: string) =>
         </p>
         <div className="sc-hp-code-block">
           <code className="sc-hp-code">curl -fsSL https://get.docker.com | sudo sh</code>
+          <CopyButton text="curl -fsSL https://get.docker.com | sudo sh" />
         </div>
         <p style={{ margin: '8px 0 8px', fontSize: 12 }}>
           Supports Ubuntu, Debian, Mint, Fedora, RHEL, CentOS and more.{' '}
@@ -312,38 +331,17 @@ export function GetStartedPage({ onNavigate }: GetStartedPageProps) {
           <p className="sc-gs-cleanup-desc">
             Run the following in your terminal to stop all containers, remove images, delete volumes, and clean up the install folder.
           </p>
-          {platform === 'windows' ? (
-            <div className="sc-hp-code-block">
-              <code className="sc-hp-code" style={{ whiteSpace: 'pre' }}>{`# Stop and remove containers, networks, volumes
-cd "$HOME\\catalyst"
-docker compose down -v --remove-orphans
-
-# Remove all Catalyst images
-docker images --format "{{.Repository}}:{{.Tag}}" | Select-String "catalyst" | ForEach-Object { docker rmi $_ }
-
-# Remove the install folder
-cd $HOME
-Remove-Item -Recurse -Force "$HOME\\catalyst"
-
-# Prune anything leftover
-docker system prune -f`}</code>
-            </div>
-          ) : (
-            <div className="sc-hp-code-block">
-              <code className="sc-hp-code" style={{ whiteSpace: 'pre' }}>{`# Stop and remove containers, networks, volumes
-cd ~/catalyst
-docker compose down -v --remove-orphans
-
-# Remove all Catalyst images
-docker images --format "{{.Repository}}:{{.Tag}}" | grep "catalyst" | xargs docker rmi 2>/dev/null || true
-
-# Remove the install folder
-rm -rf ~/catalyst
-
-# Prune anything leftover
-docker system prune -f`}</code>
-            </div>
-          )}
+          {(() => {
+            const script = platform === 'windows'
+              ? `# Stop and remove containers, networks, volumes\ncd "$HOME\\catalyst"\ndocker compose down -v --remove-orphans\n\n# Remove all Catalyst images\ndocker images --format "{{.Repository}}:{{.Tag}}" | Select-String "catalyst" | ForEach-Object { docker rmi $_ }\n\n# Remove the install folder\ncd $HOME\nRemove-Item -Recurse -Force "$HOME\\catalyst"\n\n# Prune anything leftover\ndocker system prune -f`
+              : `# Stop and remove containers, networks, volumes\ncd ~/catalyst\ndocker compose down -v --remove-orphans\n\n# Remove all Catalyst images\ndocker images --format "{{.Repository}}:{{.Tag}}" | grep "catalyst" | xargs docker rmi 2>/dev/null || true\n\n# Remove the install folder\nrm -rf ~/catalyst\n\n# Prune anything leftover\ndocker system prune -f`;
+            return (
+              <div className="sc-hp-code-block" style={{ flexDirection: 'column', alignItems: 'flex-start' }}>
+                <CopyButton text={script} />
+                <code className="sc-hp-code" style={{ whiteSpace: 'pre' }}>{script}</code>
+              </div>
+            );
+          })()}
 
           <p className="sc-gs-note" style={{ marginTop: 24, paddingTop: 20 }}>
             Having trouble? Email us at{' '}

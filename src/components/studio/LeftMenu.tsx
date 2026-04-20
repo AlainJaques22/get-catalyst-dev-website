@@ -90,6 +90,15 @@ function PlugIcon() {
   );
 }
 
+function BriefcaseIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect width="20" height="14" x="2" y="7" rx="2" />
+      <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+    </svg>
+  );
+}
+
 function RocketIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -148,12 +157,14 @@ const categoryIcons: Record<string, React.ReactNode> = {
   ai: <SparklesIcon />,
   communication: <MessageIcon />,
   general: <PlugIcon />,
+  productivity: <BriefcaseIcon />,
 };
 
 const categoryLabels: Record<string, string> = {
   ai: 'AI',
   communication: 'Communication',
   general: 'General',
+  productivity: 'Productivity',
 };
 
 export function LeftMenu({ state, dispatch }: LeftMenuProps) {
@@ -294,7 +305,7 @@ export function LeftMenu({ state, dispatch }: LeftMenuProps) {
 
         {isExpanded('connectors') && (
           <div className="sc-menu-sub-items">
-            {(['ai', 'communication', 'general'] as const).map(cat => (
+            {(['ai', 'communication', 'productivity', 'general'] as const).map(cat => (
               <div key={cat}>
                 <div
                   className="sc-menu-sub-item"
@@ -308,16 +319,58 @@ export function LeftMenu({ state, dispatch }: LeftMenuProps) {
                 </div>
                 {isExpanded(`connectors:${cat}`) && (
                   <div className="sc-menu-sub-sub-items">
-                    {connectorsByCategory[cat].map(c => (
-                      <div
-                        key={c.id}
-                        className={`sc-menu-sub-sub-item ${activeView === c.id ? 'active' : ''}`}
-                        onClick={() => navigate(c.id, c.label)}
-                      >
-                        <img src={c.icon} width={16} height={16} alt="" />
-                        <span>{c.label}</span>
-                      </div>
-                    ))}
+                    {cat === 'productivity' ? (
+                      <>
+                        {connectorsByCategory.productivity
+                          .filter(c => !c.id.startsWith('connector:jira'))
+                          .map(c => (
+                            <div
+                              key={c.id}
+                              className={`sc-menu-sub-sub-item ${activeView === c.id ? 'active' : ''}`}
+                              onClick={() => navigate(c.id, c.label)}
+                            >
+                              <img src={c.icon} width={16} height={16} alt="" />
+                              <span>{c.label}</span>
+                            </div>
+                          ))}
+                        <div
+                          className="sc-menu-sub-sub-item"
+                          onClick={() => toggleGroup('connectors:productivity:jira')}
+                        >
+                          <img src="/connectors/jira.svg" width={16} height={16} alt="" />
+                          <span>Jira</span>
+                          <span className="sc-menu-chevron">
+                            <ChevronIcon open={isExpanded('connectors:productivity:jira')} />
+                          </span>
+                        </div>
+                        {isExpanded('connectors:productivity:jira') && (
+                          <div className="sc-menu-sub-sub-sub-items">
+                            {connectorsByCategory.productivity
+                              .filter(c => c.id.startsWith('connector:jira'))
+                              .map(c => (
+                                <div
+                                  key={c.id}
+                                  className={`sc-menu-sub-sub-sub-item ${activeView === c.id ? 'active' : ''}`}
+                                  onClick={() => navigate(c.id, c.label)}
+                                >
+                                  <span>{c.label.replace('Jira ', '')}</span>
+                                </div>
+                              ))}
+                          </div>
+                        )}
+                      </>
+                    ) : (
+                      connectorsByCategory[cat].map(c => (
+                        <div
+                          key={c.id}
+                          className={`sc-menu-sub-sub-item ${activeView === c.id ? 'active' : ''}`}
+                          onClick={() => navigate(c.id, c.label)}
+                        >
+                          <img src={c.icon} width={16} height={16} alt="" />
+                          <span>{c.label}</span>
+                        </div>
+                      ))
+                    )}
                   </div>
                 )}
               </div>

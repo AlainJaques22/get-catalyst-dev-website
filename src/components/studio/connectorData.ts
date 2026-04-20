@@ -18,6 +18,11 @@ import sendgridReadme from './readmes/sendgrid.md?raw';
 import slackReadme from './readmes/slack.md?raw';
 import genericRestReadme from './readmes/generic-rest.md?raw';
 import webhookReadme from './readmes/webhook.md?raw';
+import microsoftTeamsReadme from './readmes/microsoft-teams.md?raw';
+import jiraCreateIssueReadme from './readmes/jira-create-issue.md?raw';
+import jiraAddCommentReadme from './readmes/jira-add-comment.md?raw';
+import jiraUpdateIssueReadme from './readmes/jira-update-issue.md?raw';
+import jiraTransitionIssueReadme from './readmes/jira-transition-issue.md?raw';
 
 export const connectors: ConnectorMeta[] = [
   // --- AI ---
@@ -187,6 +192,17 @@ export const connectors: ConnectorMeta[] = [
       markdown: slackReadme,
     },
   },
+  {
+    id: 'connector:microsoft-teams',
+    label: 'Microsoft Teams',
+    category: 'communication',
+    icon: '/connectors/microsoft-teams.svg',
+    cardCopy: 'Post to Teams channels — plain text or rich Adaptive Cards, no OAuth needed.',
+    readme: {
+      title: 'Microsoft Teams',
+      markdown: microsoftTeamsReadme,
+    },
+  },
   // --- General ---
   {
     id: 'connector:generic-rest',
@@ -210,12 +226,58 @@ export const connectors: ConnectorMeta[] = [
       markdown: webhookReadme,
     },
   },
+  // --- Productivity ---
+  {
+    id: 'connector:jira-create-issue',
+    label: 'Jira Create Issue',
+    category: 'productivity',
+    icon: '/connectors/jira.svg',
+    cardCopy: 'Create Jira issues from your process — bugs, tasks, stories. Cloud and Data Center.',
+    readme: {
+      title: 'Jira Create Issue',
+      markdown: jiraCreateIssueReadme,
+    },
+  },
+  {
+    id: 'connector:jira-add-comment',
+    label: 'Jira Add Comment',
+    category: 'productivity',
+    icon: '/connectors/jira.svg',
+    cardCopy: 'Add comments to Jira issues — log progress, notes, and audit trail entries.',
+    readme: {
+      title: 'Jira Add Comment',
+      markdown: jiraAddCommentReadme,
+    },
+  },
+  {
+    id: 'connector:jira-update-issue',
+    label: 'Jira Update Issue',
+    category: 'productivity',
+    icon: '/connectors/jira.svg',
+    cardCopy: 'Update fields on Jira issues — summary, priority, assignee, labels, and more.',
+    readme: {
+      title: 'Jira Update Issue',
+      markdown: jiraUpdateIssueReadme,
+    },
+  },
+  {
+    id: 'connector:jira-transition-issue',
+    label: 'Jira Transition Issue',
+    category: 'productivity',
+    icon: '/connectors/jira.svg',
+    cardCopy: 'Move Jira issues through your workflow — To Do → In Progress → Done.',
+    readme: {
+      title: 'Jira Transition Issue',
+      markdown: jiraTransitionIssueReadme,
+    },
+  },
 ];
 
 export const connectorsByCategory = {
   ai: connectors.filter(c => c.category === 'ai'),
   communication: connectors.filter(c => c.category === 'communication'),
   general: connectors.filter(c => c.category === 'general'),
+  productivity: connectors.filter(c => c.category === 'productivity'),
 };
 
 export function getConnector(id: string): ConnectorMeta | undefined {
