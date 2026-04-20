@@ -1,7 +1,30 @@
 import { useReducer, useEffect, useCallback } from 'react';
 import type { ShowcaseState, ShowcaseAction, Tab } from './types';
 
-const initialState: ShowcaseState = {
+const VIEW_LABELS: Record<string, string> = {
+  'home': 'Home',
+  'get-started': 'Get Started',
+  'connectors': 'Connectors',
+  'pricing': 'Pricing',
+  'why-docker': 'Why Docker',
+  'modeler': 'Web Modeler',
+  'pgweb': 'Database Browser',
+  'portainer': 'Container Manager',
+  'logs': 'Log Viewer',
+  'camunda': 'Camunda',
+};
+
+function viewFromPath(): string {
+  if (typeof window === 'undefined') return 'home';
+  const segment = window.location.pathname.replace(/^\//, '').replace(/\/$/, '');
+  return segment in VIEW_LABELS ? segment : 'home';
+}
+
+function urlFromView(id: string): string {
+  return id === 'home' ? '/' : `/${id}`;
+}
+
+const baseState: ShowcaseState = {
   activeView: 'home',
   openTabs: [{ id: 'home', label: 'Home' }],
   selectedTab: 'home',
@@ -69,19 +92,30 @@ function reducer(state: ShowcaseState, action: ShowcaseAction): ShowcaseState {
 }
 
 export function useShowcaseState() {
-  const [state, rawDispatch] = useReducer(reducer, initialState);
+  const [state, rawDispatch] = useReducer(reducer, undefined, () => {
+    const id = viewFromPath();
+    const label = VIEW_LABELS[id] ?? 'Home';
+    if (id === 'home') return baseState;
+    return {
+      ...baseState,
+      activeView: id,
+      selectedTab: id,
+      openTabs: [...baseState.openTabs, { id, label }],
+    };
+  });
 
   // Wrapped dispatch: pushes browser history on NAVIGATE so back/forward work
   const dispatch = useCallback((action: ShowcaseAction) => {
     rawDispatch(action);
     if (action.type === 'NAVIGATE') {
-      history.pushState({ id: action.id, label: action.label }, '');
+      history.pushState({ id: action.id, label: action.label }, '', urlFromView(action.id));
     }
   }, []);
 
   useEffect(() => {
     // Seed the initial history entry so the first back-press has somewhere to go
-    history.replaceState({ id: 'home', label: 'Home' }, '');
+    const id = state.activeView;
+    history.replaceState({ id, label: VIEW_LABELS[id] ?? 'Home' }, '', urlFromView(id));
 
     const onPopState = (e: PopStateEvent) => {
       const id = e.state?.id ?? 'home';

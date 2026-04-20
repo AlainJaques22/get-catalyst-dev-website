@@ -220,6 +220,7 @@ function ContainerRuntimeStep({ onNavigate }: { onNavigate: (id: string, label: 
 function WindowsSteps({ onNavigate }: { onNavigate: (id: string, label: string) => void }) {
   return (
     <>
+      <h3 className="sc-gs-platform-heading">Windows Install</h3>
       <ContainerRuntimeStep onNavigate={onNavigate} />
       <InstallStep
         terminalHint={<>Open PowerShell from the Start menu and paste:</>}
@@ -233,6 +234,7 @@ function WindowsSteps({ onNavigate }: { onNavigate: (id: string, label: string) 
 function MacSteps({ onNavigate }: { onNavigate: (id: string, label: string) => void }) {
   return (
     <>
+      <h3 className="sc-gs-platform-heading">macOS Install</h3>
       <ContainerRuntimeStep onNavigate={onNavigate} />
       <InstallStep
         terminalHint={<>Open Terminal (<code className="sc-gs-inline-code">Cmd+Space</code>, type "Terminal", Enter) and paste:</>}
@@ -246,6 +248,7 @@ function MacSteps({ onNavigate }: { onNavigate: (id: string, label: string) => v
 function LinuxSteps({ onNavigate }: { onNavigate: (id: string, label: string) => void }) {
   return (
     <>
+      <h3 className="sc-gs-platform-heading">Linux Install</h3>
       <Step num={1} title="Install Docker Engine (free)">
         <p style={{ margin: '0 0 12px', fontSize: 13, color: '#666' }}>
           Already have Docker installed? Run <code style={{ background: '#f5f5f5', padding: '2px 4px', borderRadius: '3px' }}>docker --version</code> to confirm, then skip to step 2.
