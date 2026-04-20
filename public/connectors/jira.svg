@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="jira-g1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2684FF"/>
+      <stop offset="100%" stop-color="#0052CC"/>
+    </linearGradient>
+    <linearGradient id="jira-g2" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2684FF"/>
+      <stop offset="100%" stop-color="#0052CC"/>
+    </linearGradient>
+  </defs>
+  <!-- Upper diamond half -->
+  <path d="M32 4 L52 24 L32 44 L12 24 Z" fill="url(#jira-g1)" opacity="0.9"/>
+  <!-- Lower overlap -->
+  <path d="M32 20 L44 32 L32 44 L20 32 Z" fill="url(#jira-g2)"/>
+  <!-- Highlight -->
+  <path d="M32 4 L52 24 L32 44" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.3"/>
+  <text x="32" y="58" text-anchor="middle" font-family="system-ui" font-size="6" font-weight="700" fill="#E0E0E0">Jira</text>
+</svg>

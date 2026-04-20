@@ -26,7 +26,7 @@ function ExternalLinkIcon() {
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div style={{ marginBottom: 36 }}>
-      <h2 style={{ fontSize: 18, fontWeight: 700, color: '#e8e8e8', margin: '0 0 12px' }}>{title}</h2>
+      <h2 style={{ fontSize: 18, fontWeight: 700, color: 'var(--text)', margin: '0 0 12px' }}>{title}</h2>
       {children}
     </div>
   );
@@ -35,14 +35,14 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 function Callout({ children }: { children: React.ReactNode }) {
   return (
     <div style={{
-      background: '#1a1a1a',
-      border: '1px solid #2a2a2a',
-      borderLeft: '3px solid #4a9eff',
+      background: 'var(--bg-2)',
+      border: '1px solid var(--border)',
+      borderLeft: '3px solid var(--primary)',
       borderRadius: 6,
       padding: '12px 16px',
       marginTop: 12,
       fontSize: 13,
-      color: '#aaa',
+      color: 'var(--text-muted)',
       lineHeight: 1.6,
     }}>
       {children}
@@ -60,10 +60,10 @@ export function WhyDockerPage({ onNavigate }: WhyDockerPageProps) {
         <div style={{ marginBottom: 32 }}>
           <button
             onClick={() => onNavigate('get-started', 'Get Started')}
+            className="sc-hp-link"
             style={{
               background: 'none',
               border: 'none',
-              color: '#4a9eff',
               cursor: 'pointer',
               fontSize: 13,
               padding: 0,
@@ -88,13 +88,13 @@ export function WhyDockerPage({ onNavigate }: WhyDockerPageProps) {
         </p>
 
         <Section title="What is Docker?">
-          <p style={{ margin: '0 0 12px', lineHeight: 1.7, color: '#ccc' }}>
+          <p style={{ margin: '0 0 12px', lineHeight: 1.7, color: 'var(--text-muted)' }}>
             Docker is a tool that packages software — along with everything it needs to run —
-            into a self-contained unit called a <strong style={{ color: '#e8e8e8' }}>container</strong>.
+            into a self-contained unit called a <strong style={{ color: 'var(--text)' }}>container</strong>.
             Think of it like a shipping container: everything is packed inside, sealed,
             and it works the same way no matter where it lands.
           </p>
-          <p style={{ margin: '0 0 12px', lineHeight: 1.7, color: '#ccc' }}>
+          <p style={{ margin: '0 0 12px', lineHeight: 1.7, color: 'var(--text-muted)' }}>
             Catalyst Studio is made up of several services: a process engine, a web modeller,
             a database, a dashboard, and more. With Docker, all of those services start together
             with a single command — and stop together just as easily.
@@ -106,17 +106,17 @@ export function WhyDockerPage({ onNavigate }: WhyDockerPageProps) {
         </Section>
 
         <Section title="What is Rancher Desktop?">
-          <p style={{ margin: '0 0 12px', lineHeight: 1.7, color: '#ccc' }}>
+          <p style={{ margin: '0 0 12px', lineHeight: 1.7, color: 'var(--text-muted)' }}>
             Docker containers run natively on Linux. On Windows and macOS, you need a small
             app to provide the Linux environment that Docker relies on.
-            <strong style={{ color: '#e8e8e8' }}> Rancher Desktop</strong> is that app.
+            <strong style={{ color: 'var(--text)' }}> Rancher Desktop</strong> is that app.
           </p>
-          <p style={{ margin: '0 0 12px', lineHeight: 1.7, color: '#ccc' }}>
+          <p style={{ margin: '0 0 12px', lineHeight: 1.7, color: 'var(--text-muted)' }}>
             It runs quietly in the background and gives Docker a place to run on your machine.
             You won't interact with it directly — it's just the engine underneath.
           </p>
-          <p style={{ margin: '0 0 12px', lineHeight: 1.7, color: '#ccc' }}>
-            <strong style={{ color: '#e8e8e8' }}>Why Rancher Desktop and not Docker Desktop?</strong>{' '}
+          <p style={{ margin: '0 0 12px', lineHeight: 1.7, color: 'var(--text-muted)' }}>
+            <strong style={{ color: 'var(--text)' }}>Why Rancher Desktop and not Docker Desktop?</strong>{' '}
             Docker Desktop is the more well-known option, but it requires a paid licence for commercial use.
             Rancher Desktop is completely free for commercial use and works just as well for running Catalyst.
           </p>
@@ -127,7 +127,7 @@ export function WhyDockerPage({ onNavigate }: WhyDockerPageProps) {
         </Section>
 
         <Section title="Why does Catalyst use Docker?">
-          <p style={{ margin: '0 0 16px', lineHeight: 1.7, color: '#ccc' }}>
+          <p style={{ margin: '0 0 16px', lineHeight: 1.7, color: 'var(--text-muted)' }}>
             There are a few reasons Docker is the right delivery method for Catalyst:
           </p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
@@ -156,11 +156,11 @@ export function WhyDockerPage({ onNavigate }: WhyDockerPageProps) {
               <div key={label} style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
                 <div style={{
                   width: 6, height: 6, borderRadius: '50%',
-                  background: '#4a9eff', marginTop: 7, flexShrink: 0,
+                  background: 'var(--primary)', marginTop: 7, flexShrink: 0,
                 }} />
                 <div>
-                  <span style={{ fontWeight: 600, color: '#e8e8e8', fontSize: 14 }}>{label}</span>
-                  <span style={{ color: '#999', fontSize: 13 }}> — {desc}</span>
+                  <span style={{ fontWeight: 600, color: 'var(--text)', fontSize: 14 }}>{label}</span>
+                  <span style={{ color: 'var(--text-muted)', fontSize: 13 }}> — {desc}</span>
                 </div>
               </div>
             ))}
@@ -168,19 +168,19 @@ export function WhyDockerPage({ onNavigate }: WhyDockerPageProps) {
         </Section>
 
         <Section title="Do I need to understand Docker to use Catalyst?">
-          <p style={{ margin: '0 0 12px', lineHeight: 1.7, color: '#ccc' }}>
+          <p style={{ margin: '0 0 12px', lineHeight: 1.7, color: 'var(--text-muted)' }}>
             No. That's the whole point. Once the install script runs, Docker is invisible —
             you just use Catalyst through your browser. The install and uninstall scripts
             on the Get Started page handle everything.
           </p>
-          <p style={{ margin: 0, lineHeight: 1.7, color: '#ccc' }}>
+          <p style={{ margin: 0, lineHeight: 1.7, color: 'var(--text-muted)' }}>
             If you're curious, Portainer (included in the Catalyst stack) gives you a visual
             dashboard for your containers — but you never need to open it unless you want to.
           </p>
         </Section>
 
         <Section title="Want to learn more?">
-          <p style={{ margin: '0 0 12px', lineHeight: 1.7, color: '#ccc' }}>
+          <p style={{ margin: '0 0 12px', lineHeight: 1.7, color: 'var(--text-muted)' }}>
             These official resources are a good starting point if you'd like to go deeper:
           </p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
@@ -193,24 +193,29 @@ export function WhyDockerPage({ onNavigate }: WhyDockerPageProps) {
           </div>
         </Section>
 
-        <div style={{ borderTop: '1px solid #222', paddingTop: 24, marginTop: 8 }}>
+        <div style={{ borderTop: '1px solid var(--border)', paddingTop: 24, marginTop: 8 }}>
           <button
             onClick={() => onNavigate('get-started', 'Get Started')}
+            className="sc-hp-link"
             style={{
-              background: '#1a1a1a',
-              border: '1px solid #333',
-              borderRadius: 6,
-              color: '#ccc',
+              background: 'none',
+              border: 'none',
               cursor: 'pointer',
               fontSize: 13,
-              padding: '8px 16px',
+              padding: 0,
+              display: 'flex',
+              alignItems: 'center',
+              gap: 6,
             }}
           >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="m15 18-6-6 6-6" />
+            </svg>
             Back to Get Started
           </button>
         </div>
 
-        <p className="sc-gs-note" style={{ marginTop: 24, paddingTop: 20, borderTop: '1px solid #1a1a1a' }}>
+        <p className="sc-gs-note" style={{ marginTop: 24, paddingTop: 20 }}>
           Questions? Email us at{' '}
           <a href="mailto:hello@get-catalyst.dev" className="sc-hp-link">
             <MailIcon /> hello@get-catalyst.dev

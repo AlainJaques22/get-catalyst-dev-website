@@ -454,6 +454,34 @@ body {
   border-left-color: var(--primary);
 }
 
+/* Sub-sub-sub-menu (e.g. Jira connectors under Jira folder) */
+.sc-menu-sub-sub-sub-items {
+  padding: 2px 0;
+}
+
+.sc-menu-sub-sub-sub-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 18px 5px 68px;
+  font-size: 12px;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-left: 2px solid transparent;
+  transition: all 0.12s;
+}
+
+.sc-menu-sub-sub-sub-item:hover {
+  background: rgba(255, 255, 255, 0.025);
+  color: #e3e0d8;
+}
+
+.sc-menu-sub-sub-sub-item.active {
+  color: #e3e0d8;
+  background: color-mix(in srgb, var(--primary) 5%, transparent);
+  border-left-color: var(--primary);
+}
+
 .sc-menu-settings {
   border-top: 1px solid rgba(255, 255, 255, 0.06);
   padding: 12px 18px;
@@ -1077,11 +1105,16 @@ body {
 [data-theme="light"] .sc-menu-sub-item:hover { color: var(--text); background: rgba(0,0,0,0.04); }
 [data-theme="light"] .sc-menu-sub-sub-item:hover { color: var(--text); background: rgba(0,0,0,0.04); }
 [data-theme="light"] .sc-menu-sub-sub-item.active { color: var(--text); }
+[data-theme="light"] .sc-menu-sub-sub-sub-item:hover { color: var(--text); background: rgba(0,0,0,0.04); }
+[data-theme="light"] .sc-menu-sub-sub-sub-item.active { color: var(--text); }
 [data-theme="light"] .sc-content-area { background: var(--bg); }
 [data-theme="light"] .sc-hp-hero { background: transparent; }
-[data-theme="light"] .sc-hp-code-block { background: #555555; color: #e2e2e2; }
-[data-theme="light"] .sc-gs-inline-code { background: #555555; border-color: #555; color: #e8e8e8; }
-[data-theme="light"] .sc-gs-install-option-header { background: #555555; color: #e8e8e8; }
+[data-theme="light"] .sc-hp-code-block { background: #eef2f7; color: #1a1a1a; border-color: #c8d0dc; }
+[data-theme="light"] .sc-hp-code-block .sc-hp-code { color: #0e7490; }
+[data-theme="light"] .sc-gs-copy-btn { background: #d8dde6; border-color: #b0bac8; color: #374151; }
+[data-theme="light"] .sc-gs-copy-btn:hover { background: #c8d0dc; color: #111; }
+[data-theme="light"] .sc-gs-inline-code { background: #dde1e7; border-color: #b0b8c4; color: #1a1a1a; }
+[data-theme="light"] .sc-gs-install-option-header { background: #e8eaed; color: #1a1a1a; border-bottom-color: #c8cdd4; }
 [data-theme="light"] .sc-hp-hero-zone { background: var(--bg); }
 [data-theme="light"] .sc-hp-section { background: var(--bg); }
 
@@ -1182,12 +1215,40 @@ body {
 }
 
 .sc-hp-code-block {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   background: var(--bg-2);
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 14px 16px;
   overflow-x: auto;
 }
+
+.sc-hp-code-block code {
+  flex: 1;
+}
+
+.sc-gs-copy-btn {
+  flex-shrink: 0;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 4px;
+  padding: 3px 9px;
+  cursor: pointer;
+  transition: color 0.15s, background 0.15s;
+  white-space: nowrap;
+}
+
+.sc-gs-copy-btn:hover {
+  color: var(--text);
+  background: rgba(255,255,255,0.14);
+}
+
 
 .sc-hp-link {
   color: var(--primary);

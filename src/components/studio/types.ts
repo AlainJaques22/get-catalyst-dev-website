@@ -11,7 +11,7 @@ export interface ConnectorReadme {
 export interface ConnectorMeta {
   id: string;
   label: string;
-  category: 'ai' | 'communication' | 'general';
+  category: 'ai' | 'communication' | 'general' | 'productivity';
   icon: string;
   cardCopy: string;
   readme: ConnectorReadme;
