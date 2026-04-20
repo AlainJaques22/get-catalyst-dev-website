@@ -2084,6 +2084,34 @@ body {
   margin-bottom: 16px;
 }
 
+.sc-pricing-smallprint-box {
+  margin-top: 32px;
+  padding: 16px 20px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-2);
+  max-width: 720px;
+}
+
+.sc-pricing-smallprint-heading {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  opacity: 0.7;
+  margin-bottom: 8px;
+}
+
+.sc-pricing-smallprint {
+  font-size: 13px;
+  color: var(--text-muted);
+  opacity: 0.75;
+  line-height: 1.65;
+  margin: 0;
+  font-style: italic;
+}
+
 .sc-pricing-tagline {
   font-size: 16px;
   color: var(--text-muted);

@@ -252,6 +252,14 @@ export function HomePage({ onNavigate }: HomePageProps) {
             Engine, modeler, cockpit, logs and AI connectors —
             all in your browser. One Docker command and you're running.
           </p>
+
+          <button
+            type="button"
+            className="sc-hp-btn-primary"
+            onClick={() => onNavigate('get-started', 'Get Started')}
+          >
+            Get Started
+          </button>
         </section>
 
         {/* ── Connector previews ── */}

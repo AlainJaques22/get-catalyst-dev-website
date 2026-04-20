@@ -20,7 +20,7 @@ export function PricingPage({ onNavigate }: PricingPageProps) {
           <span className="sc-pricing-badge sc-pricing-badge-green">Catalyst Studio</span>
           <span className="sc-pricing-product-name">Dev environment · Free</span>
         </div>
-        <h2 className="sc-pricing-h2"><span style={{ color: 'var(--primary)' }}>Catalyst Studio</span> is Free. No account.<br />No trial. The catch.... we hope you love the connectors so much you want to use them in production.</h2>
+        <h2 className="sc-pricing-h2"><span style={{ color: 'var(--primary)' }}>Catalyst Studio</span> is Free. No registration, No account. No trial period. No limits.</h2>
         <p className="sc-pricing-tagline">Your local development environment. Multi-engine — Camunda 7, Operaton, and more on the way. Every connector included. Build and test as much as you want.</p>
 
         <div className="sc-pricing-facts">
@@ -36,6 +36,11 @@ export function PricingPage({ onNavigate }: PricingPageProps) {
             <div className="sc-pricing-fact-label sc-pricing-label-green">No salesperson</div>
             <p>No salesperson will follow up. <strong>Just run one command and you're in.</strong> Full functionality. No catch.</p>
           </div>
+        </div>
+
+        <div className="sc-pricing-smallprint-box">
+          <div className="sc-pricing-smallprint-heading">The smallprint</div>
+          <p className="sc-pricing-smallprint">You're right to be sceptical. Nobody goes to all this effort to give it away for free. Confession time. We have an ulterior motive. We think once you've built with the connectors, integrated with AI and all the other good stuff, you won't want to live without them in production — and that's when we'd like to be paid. Not much. Significantly less than whoever is currently quoting you six figures to modernise your stack. Just enough for us to keep the lights on and keep shipping. That's genuinely it.</p>
         </div>
       </section>
 
