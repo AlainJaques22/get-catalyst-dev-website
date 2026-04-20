@@ -22,7 +22,9 @@ Set-Location $installPath
 
 # Clean up any existing stack (removes DB volumes for a fresh init, preserves user-files/)
 if (Test-Path "docker-compose.yml") {
-  Write-Host "Removing existing stack..."
+  Write-Host "Stopping existing stack..."
+  docker compose stop --timeout 30 2>$null
+  Write-Host "Removing containers and volumes..."
   docker compose down -v 2>$null
 }
 
