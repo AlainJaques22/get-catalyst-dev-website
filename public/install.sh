@@ -41,12 +41,8 @@ curl -fsSL "$BASE_URL/downloads/init-multi-db.sh" -o init-multi-db.sh
 chmod +x init-multi-db.sh
 
 echo ""
-echo "Pulling latest images..."
-docker compose pull
-
-echo ""
-echo "Starting Catalyst Studio..."
-docker compose up -d
+echo "Pulling images and starting Catalyst Studio..."
+docker compose up -d --pull always
 
 # Wait for Caddy to be ready
 echo ""
